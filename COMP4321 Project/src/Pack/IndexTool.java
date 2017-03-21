@@ -1,5 +1,7 @@
 //it is the Indexer
 //finalize() is changed to finish()
+//getLastIndex -> getLastIdx
+//getIndex -> getIdx
 
 package Pack;
 
@@ -104,9 +106,9 @@ public class IndexTool{
   	public void printAll() throws IOException {
   		// Print all the data in the hashtable
   		// ADD YOUR CODES HERE
-  		FastIterator iter = hashtable1.keys();
+  		FastIterator i = hashtable1.keys();
   		String key;
-  		while ((key = (String) iter.next()) != null) {
+  		while ((key = (String) i.next()) != null) {
   			System.out.println(key + ": " + hashtable1.get(key));
   		}
 
