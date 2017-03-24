@@ -1,5 +1,6 @@
 package Pack;
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.Set;
@@ -31,7 +32,7 @@ public class Spider {
 	private static IndexTool maxTermFreq;
 	private static InvertedIndex termWth;
 
-	public static void main(String[] args) throws IOException{
+	public static void main(String[] args) throws IOException, ParseException{
 		
 		try
 		{
@@ -101,7 +102,7 @@ public class Spider {
 		return (tf*idf)/maxTf;
 	}
 	
-	public static void fetchPages(String url) throws ParserException, IOException{
+	public static void fetchPages(String url) throws ParserException, IOException, ParseException{
 		System.out.println(url);
 		DoneList.add(url);
 		numOfPage++;

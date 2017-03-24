@@ -54,13 +54,33 @@ public class Crawl{
     return now.length();
   }
 
-  public String lastUpdate() throws IOException{
-    String[] now = url.split ("://");
-    //get the connection to url
-    URL u = new URL("http", now[1], 80 , "/");
-    URLConnection urlConnect = u.openConnection();
+  public String lastUpdate() throws IOException, ParseException{
+//    String[] now = url.split ("://");
+//    //get the connection to url
+//    URL u = new URL("http", now[1], 80 , "/");
+	URL urlTypeUrl = new URL(url);
+    HttpURLConnection urlConnect = (HttpURLConnection) urlTypeUrl.openConnection();
     DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-    Date lastdate = new Date(urlConnect.getLastModified());
+    java.util.Date lastdate = new java.util.Date(urlConnect.getLastModified());
+    if (urlConnect.getLastModified()==0){
+    	BufferedReader buffer = new BufferedReader(
+                				new InputStreamReader(
+                				urlConnect.getInputStream()
+                				)
+                				);
+    	String inLine;
+    	String now = "";
+    	while ((inLine = buffer.readLine())!=null){
+    		if (inLine.contains("Last updated on")){
+    			String[] parts=inLine.split(" ");
+    			String date=parts[3];
+    			SimpleDateFormat fromUser = new SimpleDateFormat("yyyy-MM-dd");
+    			SimpleDateFormat myFormat = new SimpleDateFormat("dd-MM-yyyy");
+    			String reformatStr = myFormat.format(fromUser.parse(date));
+    			return reformatStr;
+    		}
+    	}
+    }
     return dateFormat.format(lastdate);
   }
 
