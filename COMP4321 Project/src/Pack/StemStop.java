@@ -20,7 +20,7 @@ public class StemStop{
 //readd stopword.txt file and put in HashSet
       FileInputStream filestream = new FileInputStream(string);
       DataInputStream input = new DataInputStream(filestream);
-      BufferReader buffer = new BufferReader(new InputStreamReader(input));
+      BufferedReader buffer = new BufferedReader(new InputStreamReader(input));
       String strLine;
       while ((strLine = buffer.readLine()) != null){
         stopwd.add(strLine);

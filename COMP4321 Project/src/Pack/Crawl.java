@@ -39,14 +39,14 @@ public class Crawl{
   public int pageSize() throws IOException{
     URL website = new URL(url);
     URLConnection webconnect = website.openConnection();
-    BufferReader buffer = new BufferReader(
+    BufferedReader buffer = new BufferedReader(
                           new InputStreamReader(
                           webconnect.getInputStream()
                           )
                           );
     String inLine;
     String now = "";
-    while (inLine = buffer.readLine()) != null){
+    while ((inLine = buffer.readLine()) != null){
       now = now + inLine;
     }
     buffer.close();
@@ -59,7 +59,7 @@ public class Crawl{
     //get the connection to url
     URL u = new URL("http", now[1], 80 , "/");
     URLConnection urlConnect = u.openConnection();
-    DataFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+    DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
     Date lastdate = new Date(urlConnect.getLastModified());
     return dateFormat.format(lastdate);
   }
@@ -75,7 +75,7 @@ public class Crawl{
   		bean.setURL(url);
   		bean.setLinks(false);
   		String contents = bean.getStrings();
-  		StringTokenize st = new StringTokenizer(contents);
+  		StringTokenizer st = new StringTokenizer(contents);
   		while (st.hasMoreTokens()) {
   		    result.add(st.nextToken());
   		}
@@ -106,7 +106,7 @@ public class Crawl{
     for (int i=0;i<node.length; i++){
       Node sgNode = node[i];
       if (sgNode instanceof TitleTag){
-        TitleTag title = (TitleTag) node;
+        TitleTag title = (TitleTag) sgNode;
         line = title.getTitle();
       }
     }
@@ -115,7 +115,7 @@ public class Crawl{
     for(int k=0; k< string.length;k++){
       vector.add(string[k]);
     }
-    return vec;
+    return vector;
   }
 
   public static void main (String[] args)

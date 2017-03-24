@@ -11,18 +11,18 @@ public class Webpage implements Comparable<Webpage>{
 	private String lastUpdate;
 	private Vector<String> ParentLk;
 	private Vector<String> ChildLk;
-	private Vector<Vocab> keyword;
+	private Vector<Word> keyword;
 
 	public Webpage(){
 		ParentLk = new Vector<String>();
 		ChildLk = new Vector<String>();
-		keyword = new Vector<Vocab>();
+		keyword = new Vector<Word>();
 	}
 
 	public String getURL(){	return url;}
 	public void setURL(String url){	this.url=url;}
 	public String getTitle(){return title;}
-	public void setTitle(String title){ this.title=title}
+	public void setTitle(String title){ this.title=title;}
 	public double getScore(){	return score;}
 	public void setScore(double score){	this.score=score;}
 	public int getPageSize(){	return pageSize;}
@@ -33,8 +33,8 @@ public class Webpage implements Comparable<Webpage>{
 	public Vector<String> getParentLk(){	return ParentLk;}
 	public void addChildLk(String link){	ChildLk.add(link);}
 	public Vector<String> getChildLk(){	return ChildLk;}
-	public void addKeyword(Vocab word){	keyword.add(word);}
-	public Vector<Vocab> getKeyword(){	return keyword;}
+	public void addKeyword(Word word){	keyword.add(word);}
+	public Vector<Word> getKeyword(){	return keyword;}
 	public void sortKeyword(){	Collections.sort(keyword);}
 
 	public int compareWith(Webpage webpage){
@@ -46,22 +46,29 @@ public class Webpage implements Comparable<Webpage>{
 	}
 
 	public String showInfm(){
-		String infm = score+"\t";result += title+"\n";
-		result += "\t"+url+"\n";
-		result += "\t"+lastUpdate+","+pageSize+"\n";
-		result += "\t";
+		String infm = score+"\t";infm += title+"\n";
+		infm += "\t"+url+"\n";
+		infm += "\t"+lastUpdate+","+pageSize+"\n";
+		infm += "\t";
 		for(int i = 0; i < keyword.size(); i++){
-			Vocab word = keyword.elementAt(i);
-			result += word.getText()+" "+word.getFreq()+"; ";
+			Word word = keyword.elementAt(i);
+			infm += word.getText()+" "+word.getFreq()+"; ";
 		}
-		result+="\n";
-		result+="\t";
-		for(int i = 0; i < PLink.size(); i++){
-			result += PLink.elementAt(i)+"\n";
+		infm+="\n";
+		infm+="\t";
+		for(int i = 0; i < ParentLk.size(); i++){
+			infm += ParentLk.elementAt(i)+"\n";
 		}
-		result+="\t";
-		for(int i = 0; i < CLink.size(); i++){
-			result += CLink.elementAt(i)+"\n";
+		infm+="\t";
+		for(int i = 0; i < ChildLk.size(); i++){
+			infm += ChildLk.elementAt(i)+"\n";
 		}
-		return result+"\n";
+		return infm+"\n";
 	}
+
+	@Override
+	public int compareTo(Webpage arg0) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+}

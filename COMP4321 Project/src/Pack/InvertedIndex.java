@@ -14,9 +14,9 @@ public class InvertedIndex
     private RecordManager recman;
     private HTree hashtable;
 
-    InvertedIndex(String recordmanager, String objectname) throws IOException
+    InvertedIndex(RecordManager recman2, String objectname) throws IOException
     {
-        recman = RecordManagerFactory.createRecordManager(recordmanager);
+    	recman = recman2;;
         long recid = recman.getNamedObject(objectname);
 
         if (recid != 0)
@@ -41,14 +41,14 @@ public class InvertedIndex
   			return;
   		}
   		String new_entry = x + ":" + y + " ";
-  		//因為"put"會cover previous insertion,
-  		// 要extract existed data;
+  		//��"put"��over previous insertion,
+  		// 閬xtract existed data;
   		String existed_entry = "";
   		if (hashtable.get(word) != null) {
   			existed_entry = (String) hashtable.get(word);
   		}
   		hashtable.put(word, existed_entry + new_entry);
-      //而家就好似append入尾咁
+      //�振撠勗末隡嫵ppend�撠曉��
   	}
 
     public void addEntry2(String word, String value) throws IOException {
@@ -71,6 +71,13 @@ public class InvertedIndex
   		// ADD YOUR CODES HERE
   		hashtable.remove(word);
   	}
+    
+	public String getValue(String index) throws IOException{
+		if(hashtable.get(index) == null){
+			return "-1";
+		}
+		return String.valueOf(hashtable.get(index));
+	}
 
     public int numOfElement(String word) throws IOException{
   		if (hashtable.get(word) != null) {

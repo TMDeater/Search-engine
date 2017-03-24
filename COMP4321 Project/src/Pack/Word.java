@@ -11,7 +11,7 @@ public class Word implements Comparable<Word>{
     this.setFreq(freq);
   }
   public int compareTo(Word word){
-    return word.getFreq - this.getFreq;
+    return word.getFreq() - this.getFreq();
   }
   public void setText(String txt){ this.text = txt;}
   public String getText(){  return text;}
