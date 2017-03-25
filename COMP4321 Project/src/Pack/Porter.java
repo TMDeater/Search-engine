@@ -24,7 +24,8 @@ public class Porter {
 
   private String Clean( String str ) {
      int last = str.length();
-
+     if (str.isEmpty()){
+         return "no title";}
      Character ch = new Character( str.charAt(0) );
      String temp = "";
 
@@ -386,6 +387,7 @@ public class Porter {
   public String stripAffixes( String str ) {
 
     str = str.toLowerCase();
+    if (str=="") {   return str;}
     str = Clean(str);
 
     if (( str != "" ) && (str.length() > 2)) {

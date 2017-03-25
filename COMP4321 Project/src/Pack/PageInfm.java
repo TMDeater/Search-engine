@@ -56,6 +56,11 @@ public class PageInfm {
 		}
 		hashtable.put(key, new Infm(title, url, lastModifyDate, size));
 	}
+
+	public void delEntry(String key) throws IOException{
+
+			hashtable.remove(key);
+	}
 	
 	public String getTitle(String key) throws IOException{
 		Infm temp = (Infm)hashtable.get(key);
@@ -89,9 +94,9 @@ public class PageInfm {
 		temp.size = size;
 	}
 	
-	public void delEntry(String word) throws IOException {
-		hashtable.remove(word);
-	}
+//	public void delEntry(String word) throws IOException {
+//		hashtable.remove(word);
+//	}
 	
 	public void printAll() throws IOException {
 		FastIterator iter = hashtable.keys();

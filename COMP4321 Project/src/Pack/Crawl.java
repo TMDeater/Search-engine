@@ -31,10 +31,15 @@ import java.net.URLConnection;
 import org.htmlparser.tags.*;
 
 public class Crawl{
-  private String url;
+
+    private String url;
   public Crawl(String url){
     this.url = url;
   }
+
+    public String getUrl() {
+        return url;
+    }
 
   public int pageSize() throws IOException{
     URL website = new URL(url);

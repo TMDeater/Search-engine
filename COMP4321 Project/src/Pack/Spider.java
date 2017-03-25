@@ -15,7 +15,7 @@ import org.htmlparser.util.ParserException;
 import Pack.*;
 
 public class Spider {
-	private static final int MAX = 30;
+	private static final int MAX = 300;
 	private static int numOfPage = 0;
 	private static StemStop stopStem = new StemStop("D:/Search-engine/COMP4321 Project/src/Pack/stopwords.txt");
 	private static Vector<String> TaskList = new Vector<String>();
@@ -48,7 +48,7 @@ public class Spider {
 			Pageppt  = new PageInfm(recman, "PPT");
 			maxTermFreq = new IndexTool(recman, "maxTermFreq");
 			termWth = new InvertedIndex(recman, "termWth");
-			System.out.println("loading...");
+			System.out.println("load in webpage...");
 			fetchPages("http://www.cse.ust.hk");
 			while(!TaskList.isEmpty() && numOfPage < MAX){
 				if(DoneList.contains(TaskList.firstElement())){
@@ -57,11 +57,17 @@ public class Spider {
 				}
 				else if (TaskList.firstElement().contains("http://www.cse.ust.hk/ug/hkust_only") ){
 					TaskList.removeElementAt(0);
+					int pageIndex = PageIndexer.getIdxNumber("http://www.cse.ust.hk/ug/hkust_only");
+					ForwardIndex.delEntry(Integer.toString(pageIndex));
+					Pageppt.delEntry(Integer.toString(pageIndex));
 					//numOfPage--;
 					continue;
 				}
 				else if (TaskList.firstElement().contains("http://www.cse.ust.hk/pg/hkust_only") ){
 					TaskList.removeElementAt(0);
+					int pageIndex = PageIndexer.getIdxNumber("http://www.cse.ust.hk/pg/hkust_only");
+					ForwardIndex.delEntry(Integer.toString(pageIndex));
+					Pageppt.delEntry(Integer.toString(pageIndex));
 					//numOfPage--;
 					continue;
 				}
@@ -125,10 +131,10 @@ public class Spider {
 			String date = crawler.lastUpdate();
 			String date2 = Pageppt.getLastDate(Integer.toString(pageIndex));
 			if(date.compareTo(date2)==0){
-				System.out.println("Same...");
+				System.out.println("Same as data stored...");
 				return;
 			}else{
-				System.out.println("update...");
+				System.out.println("update information...");
 				//update if last modification date are not same
 				String text = ForwardIndex.getValue(Integer.toString(pageIndex));
 				String[] temp = text.split(" ");

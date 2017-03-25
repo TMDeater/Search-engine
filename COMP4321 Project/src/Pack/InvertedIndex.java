@@ -69,7 +69,9 @@ public class InvertedIndex
     public void delEntry(String word) throws IOException {
   		// Delete the word and its list from the hashtable
   		// ADD YOUR CODES HERE
-  		hashtable.remove(word);
+  		if(hashtable.get(word)!=null){
+  			hashtable.remove(word);
+		}
   	}
     
 	public String getValue(String index) throws IOException{
