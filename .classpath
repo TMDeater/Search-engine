@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="COMP4321 Project/lib/jdbm-1.0/examples"/>
+	<classpathentry kind="src" path="COMP4321 Project/src"/>
+	<classpathentry kind="lib" path="COMP4321 Project/lib/htmlparser1_6/lib/filterbuilder.jar"/>
+	<classpathentry kind="lib" path="COMP4321 Project/lib/htmlparser1_6/lib/htmllexer.jar"/>
+	<classpathentry kind="lib" path="COMP4321 Project/lib/htmlparser1_6/lib/htmlparser.jar"/>
+	<classpathentry kind="lib" path="COMP4321 Project/lib/htmlparser1_6/lib/junit.jar"/>
+	<classpathentry kind="lib" path="COMP4321 Project/lib/htmlparser1_6/lib/sax2.jar"/>
+	<classpathentry kind="lib" path="COMP4321 Project/lib/htmlparser1_6/lib/thumbelina.jar"/>
+	<classpathentry kind="lib" path="COMP4321 Project/lib/jdbm-1.0/lib/jdbm-1.0.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
