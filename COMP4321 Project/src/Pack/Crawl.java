@@ -124,6 +124,7 @@ public class Crawl{
 
   public Vector<String> getTitle() throws ParserException{
     Parser pars = new Parser(url);
+    pars.setEncoding("UTF-8");
     NodeFilter filt = new NodeClassFilter(TitleTag.class);
     NodeList nodeLst = pars.parse(filt);
     Node[] node = nodeLst.toNodeArray();

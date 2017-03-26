@@ -1,5 +1,9 @@
 package Pack;
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.UnknownHostException;
 import java.text.ParseException;
 import java.util.Hashtable;
 import java.util.Iterator;
@@ -68,6 +72,14 @@ public class Spider {
 					//numOfPage--;
 					continue;
 				}
+				else if(fetchable(TodoList.firstElement())==false){
+					TodoList.removeElementAt(0);
+					int pageIndex = PageIndexer.getIdxNumber(TodoList.firstElement());
+					wordForward.delEntry(Integer.toString(pageIndex));
+					PageProperty.delEntry(Integer.toString(pageIndex));
+					System.out.println("Exception encountered or HTTP response other than 200 for: "+TodoList.firstElement());
+					continue;
+				}
 				else{
 					fetchPages(TodoList.firstElement());
 					TodoList.removeElementAt(0);
@@ -84,6 +96,23 @@ public class Spider {
 		{
 			e.printStackTrace ();
 		}
+	}
+
+	public static boolean fetchable(String link) throws IOException {
+		URL url = new URL(link);
+		try{
+			HttpURLConnection connection = (HttpURLConnection)url.openConnection();
+			connection.setRequestMethod("GET");
+			connection.connect();
+
+			int code = connection.getResponseCode();
+			if (code==200) return true;
+			else return false;
+		}catch(UnknownHostException ex){
+			System.out.println("UnknownHostException encountered.");
+			return false;
+		}
+
 	}
 	
 	public static void fetchPages(String url) throws ParserException, IOException, ParseException{
@@ -159,16 +188,22 @@ public class Spider {
 	    
 		//extract title
 		StemStop stopStem = new StemStop("D:/Search-engine/COMP4321 Project/src/Pack/stopwords.txt");
-		Vector<String> titleWords = crawler.getTitle();
 		String title = "";
-		if (titleWords.firstElement()!=""){
-			for(int i = 0; i < titleWords.size(); i++){
-				title += titleWords.elementAt(i);
-				if (!stopStem.isStopWord(titleWords.get(i))){
-					int index = TitleIndexer.addEntry(stopStem.stem(titleWords.get(i)), Integer.toString(TitleIndexer.getLastIdx()));
+		try{
+			Vector<String> titleWords = crawler.getTitle();
+
+			if (titleWords.firstElement()!=""){
+				for(int i = 0; i < titleWords.size(); i++){
+					title += titleWords.elementAt(i);
+					if (!stopStem.isStopWord(titleWords.get(i))){
+						int index = TitleIndexer.addEntry(stopStem.stem(titleWords.get(i)), Integer.toString(TitleIndexer.getLastIdx()));
+					}
 				}
 			}
+		}catch(ParserException ex){
+			title = " ";
 		}
+
 		
 		//extract last update
 		String date = crawler.lastUpdate();
