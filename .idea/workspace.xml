@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="58ec65ce-19c9-4657-b0f5-ece01fa20ea3" name="Default" comment="solve some bugs like null title">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/COMP4321 Project/Phase 1 Project Description.docx" afterPath="$PROJECT_DIR$/COMP4321 Project/Phase 1 Project Description.docx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/COMP4321 Project/~$ase 1 Project Description.docx" afterPath="$PROJECT_DIR$/COMP4321 Project/~$ase 1 Project Description.docx" />
+    <list default="true" id="58ec65ce-19c9-4657-b0f5-ece01fa20ea3" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/COMP4321 Project/src/Pack/Spider.java" afterPath="$PROJECT_DIR$/COMP4321 Project/src/Pack/Spider.java" />
     </list>
@@ -33,12 +31,12 @@
       <file leaf-file-name="Spider.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/COMP4321 Project/src/Pack/Spider.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="80" column="42" lean-forward="false" selection-start-line="80" selection-start-column="42" selection-end-line="80" selection-end-column="42" />
+            <state relative-caret-position="265">
+              <caret line="86" column="5" lean-forward="false" selection-start-line="86" selection-start-column="5" selection-end-line="86" selection-end-column="5" />
               <folding>
                 <element signature="e#574#582#0" expanded="true" />
                 <element signature="e#638#646#0" expanded="true" />
-                <element signature="e#4745#4762#0" expanded="true" />
+                <element signature="e#4566#4583#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -726,7 +724,7 @@
       <workItem from="1490372325443" duration="5505000" />
       <workItem from="1490445867562" duration="3917000" />
       <workItem from="1490458038885" duration="1083000" />
-      <workItem from="1490510476583" duration="1242000" />
+      <workItem from="1490510476583" duration="1285000" />
     </task>
     <task id="LOCAL-00001" summary="solve some bugs like null title">
       <created>1490458954293</created>
@@ -742,11 +740,18 @@
       <option name="project" value="LOCAL" />
       <updated>1490511545803</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="delete term weight calculation">
+      <created>1490511745593</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1490511745593</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11747000" />
+    <option name="totallyTimeSpent" value="11790000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -800,7 +805,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="solve some bugs like null title" />
-    <option name="LAST_COMMIT_MESSAGE" value="solve some bugs like null title" />
+    <MESSAGE value="delete term weight calculation" />
+    <option name="LAST_COMMIT_MESSAGE" value="delete term weight calculation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -813,7 +819,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/COMP4321 Project/src/Pack/Spider.java</url>
-          <line>166</line>
+          <line>161</line>
           <properties />
           <option name="timeStamp" value="9" />
         </line-breakpoint>
@@ -834,7 +840,7 @@
           <folding>
             <element signature="e#574#582#0" expanded="true" />
             <element signature="e#638#646#0" expanded="true" />
-            <element signature="e#4745#4762#0" expanded="true" />
+            <element signature="e#4566#4583#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -907,7 +913,7 @@
           <folding>
             <element signature="e#574#582#0" expanded="true" />
             <element signature="e#638#646#0" expanded="true" />
-            <element signature="e#4745#4762#0" expanded="true" />
+            <element signature="e#4566#4583#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -980,7 +986,7 @@
           <folding>
             <element signature="e#574#582#0" expanded="true" />
             <element signature="e#638#646#0" expanded="true" />
-            <element signature="e#4745#4762#0" expanded="true" />
+            <element signature="e#4566#4583#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1113,12 +1119,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/COMP4321 Project/src/Pack/Spider.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="80" column="42" lean-forward="false" selection-start-line="80" selection-start-column="42" selection-end-line="80" selection-end-column="42" />
+        <state relative-caret-position="265">
+          <caret line="86" column="5" lean-forward="false" selection-start-line="86" selection-start-column="5" selection-end-line="86" selection-end-column="5" />
           <folding>
             <element signature="e#574#582#0" expanded="true" />
             <element signature="e#638#646#0" expanded="true" />
-            <element signature="e#4745#4762#0" expanded="true" />
+            <element signature="e#4566#4583#0" expanded="true" />
           </folding>
         </state>
       </provider>

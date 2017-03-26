@@ -86,11 +86,6 @@ public class Spider {
 		}
 	}
 	
-	public static double termWeight(double tf, double maxTf, double numOfDoc, double maxOfDoc){
-		double idf = Math.log(maxOfDoc/numOfDoc)/Math.log(2);
-		return (tf*idf)/maxTf;
-	}
-	
 	public static void fetchPages(String url) throws ParserException, IOException, ParseException{
 		System.out.println(url);
 		DoneList.add(url);
