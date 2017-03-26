@@ -26,9 +26,8 @@ public class Spider {
 	private static InvertedIndex ChildParent;
 	private static RecordManager recman;
 	private static InvertedIndex ParentChild;
-	private static PageInfm Pageppt;
+	private static PageInfm PageProperty;
 	private static IndexTool maxTermFreq;
-	private static InvertedIndex termWth;
 
 	public static void main(String[] args) throws IOException, ParseException{
 		
@@ -43,9 +42,9 @@ public class Spider {
 			wordForward = new InvertedIndex(recman, "ForwardIndex");
 			ChildParent = new InvertedIndex(recman, "ParentChild");
 			ParentChild = new InvertedIndex(recman, "PC");
-			Pageppt  = new PageInfm(recman, "PPT");
+			PageProperty = new PageInfm(recman, "PPT");
 			maxTermFreq = new IndexTool(recman, "maxTermFreq");
-			termWth = new InvertedIndex(recman, "termWth");
+
 			System.out.println("load in webpage...");
 			fetchPages("http://www.cse.ust.hk");
 			while(!TodoList.isEmpty() && numOfPage < MAX){
@@ -57,7 +56,7 @@ public class Spider {
 					TodoList.removeElementAt(0);
 					int pageIndex = PageIndexer.getIdxNumber("http://www.cse.ust.hk/ug/hkust_only");
 					wordForward.delEntry(Integer.toString(pageIndex));
-					Pageppt.delEntry(Integer.toString(pageIndex));
+					PageProperty.delEntry(Integer.toString(pageIndex));
 					//numOfPage--;
 					continue;
 				}
@@ -65,7 +64,7 @@ public class Spider {
 					TodoList.removeElementAt(0);
 					int pageIndex = PageIndexer.getIdxNumber("http://www.cse.ust.hk/pg/hkust_only");
 					wordForward.delEntry(Integer.toString(pageIndex));
-					Pageppt.delEntry(Integer.toString(pageIndex));
+					PageProperty.delEntry(Integer.toString(pageIndex));
 					//numOfPage--;
 					continue;
 				}
@@ -76,24 +75,10 @@ public class Spider {
 				
 			}
 			
-			//calculate termWeight
-			FastIterator iter =  wordInverted.AllKey();
-			String key;
-			while ((key = (String) iter.next()) != null) {
-				int df = wordInverted.numOfElement(key);
-				for(int i = 0; i < df ; i++){
-					String[] temp = wordInverted.getElement(key, i).split(":");
-					int maxTF = maxTermFreq.getIdxNumber(temp[0]);
-					int tf = Integer.parseInt((temp[1]));
-					double weight = termWeight(tf, maxTF, df, MAX);
-					termWth.addEntry2(key, temp[0]+":"+weight);
-				}
-			}
-			
 			recman.commit();
-			Pageppt.printAll();
+			PageProperty.printAll();
 			recman.close();
-			System.out.println("\nDone");
+			System.out.println("\nFinished");
 		}
 		catch (ParserException e)
 		{
@@ -124,10 +109,10 @@ public class Spider {
 		int pageIndex;
 		
 		//check contain or not
-		if(PageIndexer.isContain(url) && Pageppt.isContain(PageIndexer.getIdx(url))){
+		if(PageIndexer.isContain(url) && PageProperty.isContain(PageIndexer.getIdx(url))){
 			pageIndex = PageIndexer.getIdxNumber(url);
 			String date = crawler.lastUpdate();
-			String date2 = Pageppt.getLastDate(Integer.toString(pageIndex));
+			String date2 = PageProperty.getLastDate(Integer.toString(pageIndex));
 			if(date.compareTo(date2)==0){
 				System.out.println("Same as data stored...");
 				return;
@@ -140,7 +125,7 @@ public class Spider {
 					System.out.println(temp[i]);
 				}
 				wordForward.delEntry(Integer.toString(pageIndex));
-				Pageppt.delEntry(Integer.toString(pageIndex));
+				PageProperty.delEntry(Integer.toString(pageIndex));
 			}
 		}else{
 			System.out.println("NewPage...");
@@ -195,7 +180,7 @@ public class Spider {
 		
 		//extract pagesize
 		int pageSize = crawler.pageSize();
-		Pageppt.addEntry(Integer.toString(pageIndex), title, url, date, pageSize);
+		PageProperty.addEntry(Integer.toString(pageIndex), title, url, date, pageSize);
 		for(int i = 0; i < links.size(); i++){
 			int pageId = PageIndexer.addEntry(links.elementAt(i),Integer.toString(PageIndexer.getLastIdx()) );
 			ChildParent.addEntry2(Integer.toString(pageId),Integer.toString(pageIndex));
