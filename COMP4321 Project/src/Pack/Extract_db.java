@@ -1,31 +1,21 @@
 package Pack;
 import org.htmlparser.util.ParserException;
 
-import Pack.IndexTool;
-import Pack.InvertedIndex;
-import Pack.PageInfm;
-import Pack.StemStop;
-import Pack.*;
 import java.io.*;
-import java.util.Vector;
+
 import jdbm.RecordManager;
 import jdbm.RecordManagerFactory;
-import jdbm.helper.FastIterator;
 
 public class Extract_db {
 	private static final int MAX = 30;
 	private static int numOfPage = 0;
-	private static StemStop stopStem = new StemStop("D:/Search-engine/COMP4321 Project/src/Pack/stopwords.txt");
-	private static Vector<String> TaskList = new Vector<String>();
-	private static Vector<String> DoneList = new Vector<String>();
+	private static StemStop stopStem = new StemStop("COMP4321 Project/src/Pack/stopwords.txt");
 	private static IndexTool PageIndexer;
 	private static IndexTool WordIndexer;
 	private static IndexTool TitleIndexer;
 	private static InvertedIndex inverted;
 	private static InvertedIndex ForwardIndex;
-	private static InvertedIndex pagePro;
 	private static InvertedIndex ChildParent;
-	private static OutputStreamWriter fstream;
 	private static Writer write;
 	private static RecordManager recman;
 	private static InvertedIndex ParentChild;
@@ -38,8 +28,7 @@ public class Extract_db {
 	
 	
 	public static void main(String[] args) throws IOException, ParserException {
-		recman = RecordManagerFactory.createRecordManager("D:/Search-engine/COMP4321 Project/public_html/database");
-		//recman = RecordManagerFactory.createRecordManager("/Users/JasonPoon/Documents/workspaceForJ2EE/final/database");
+		recman = RecordManagerFactory.createRecordManager("COMP4321 Project/public_html/database");
 		
 		PageIndexer = new IndexTool(recman, "page");
 		WordIndexer = new IndexTool(recman, "word");
@@ -51,8 +40,6 @@ public class Extract_db {
 		ChildParent = new InvertedIndex(recman, "ParentChild");
 		ParentChild = new InvertedIndex(recman, "PC");
 		Pageppt  = new PageInfm(recman, "PPT");
-//		fstream = new OutputStreamWriter(new FileOutputStream("spider_result.txt"), "utf-8");
-		//out = new OutputStreamWriter(new FileOutputStream("spider_result.txt"), "utf-8");
 		write = new BufferedWriter(new OutputStreamWriter(
 				new FileOutputStream("spider_result.txt"), "UTF8"));
 		maxTermFreq = new IndexTool(recman, "maxTermFreq");
@@ -73,7 +60,7 @@ public class Extract_db {
 				continue;
 			}
 			else{
-				fetch(pageidxval);
+				generatePageInfm(pageidxval);
 				printedpage++;
 				i++;
 			}
@@ -81,12 +68,12 @@ public class Extract_db {
 
 			
 		
-		//Close the output stream
+		//Close output stream
 		write.close();
 		recman.close();
 	}
 	
-	public static void fetch(String url) throws IOException{
+	public static void generatePageInfm(String url) throws IOException{
 		int index = PageIndexer.getIdxNumber(url);
 		
 		System.out.println(Pageppt.getTitle(Integer.toString(index)));

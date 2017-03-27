@@ -19,7 +19,7 @@ import org.htmlparser.util.ParserException;
 public class Spider {
 	private static final int MAX = 30;
 	private static int numOfPage = 0;
-	private static StemStop stopStem = new StemStop("D:/Search-engine/COMP4321 Project/src/Pack/stopwords.txt");
+	private static StemStop stopStem = new StemStop("COMP4321 Project/src/Pack/stopwords.txt");
 	private static Vector<String> TodoList = new Vector<String>();
 	private static Vector<String> DoneList = new Vector<String>();
 	private static IndexTool PageIndexer;
@@ -37,8 +37,7 @@ public class Spider {
 		
 		try
 		{
-			//recman = RecordManagerFactory.createRecordManager("/comp4321/khpoon/public_html/database");
-			recman = RecordManagerFactory.createRecordManager("D:/Search-engine/COMP4321 Project/public_html/database");
+			recman = RecordManagerFactory.createRecordManager("COMP4321 Project/public_html/database");
 			PageIndexer = new IndexTool(recman, "page");
 			WordIndexer = new IndexTool(recman, "word");
 			TitleIndexer = new IndexTool(recman, "title");
@@ -187,7 +186,7 @@ public class Spider {
 	    
 	    
 		//extract title
-		StemStop stopStem = new StemStop("D:/Search-engine/COMP4321 Project/src/Pack/stopwords.txt");
+		StemStop stopStem = new StemStop("COMP4321 Project/src/Pack/stopwords.txt");
 		String title = "";
 		try{
 			Vector<String> titleWords = crawler.getTitle();
