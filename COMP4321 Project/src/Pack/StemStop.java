@@ -20,7 +20,7 @@ public class StemStop{
 //readd stopword.txt file and put in HashSet
       FileInputStream filestream = new FileInputStream(string);
       DataInputStream input = new DataInputStream(filestream);
-      BufferedReader buffer = new BufferedReader(new InputStreamReader(input));
+      BufferedReader buffer = new BufferedReader(new InputStreamReader(input, "utf-8"));
       String strLine;
       while ((strLine = buffer.readLine()) != null){
         stopwd.add(strLine);
@@ -44,7 +44,7 @@ public class StemStop{
 			do
 			{
 				System.out.print("Please enter a single English word: ");
-				BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+				BufferedReader in = new BufferedReader(new InputStreamReader(System.in, "utf-8"));
 				input = in.readLine();
 				if(input.length()>0)
 				{

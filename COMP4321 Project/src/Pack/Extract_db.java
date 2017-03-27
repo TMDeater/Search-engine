@@ -25,8 +25,8 @@ public class Extract_db {
 	private static InvertedIndex ForwardIndex;
 	private static InvertedIndex pagePro;
 	private static InvertedIndex ChildParent;
-	private static FileWriter fstream;
-	private static BufferedWriter out;
+	private static OutputStreamWriter fstream;
+	private static Writer write;
 	private static RecordManager recman;
 	private static InvertedIndex ParentChild;
 	private static PageInfm Pageppt;
@@ -51,8 +51,10 @@ public class Extract_db {
 		ChildParent = new InvertedIndex(recman, "ParentChild");
 		ParentChild = new InvertedIndex(recman, "PC");
 		Pageppt  = new PageInfm(recman, "PPT");
-		fstream = new FileWriter("spider_result.txt");
-		out = new BufferedWriter(fstream);
+//		fstream = new OutputStreamWriter(new FileOutputStream("spider_result.txt"), "utf-8");
+		//out = new OutputStreamWriter(new FileOutputStream("spider_result.txt"), "utf-8");
+		write = new BufferedWriter(new OutputStreamWriter(
+				new FileOutputStream("spider_result.txt"), "UTF8"));
 		maxTermFreq = new IndexTool(recman, "maxTermFreq");
 		termWth = new InvertedIndex(recman, "termWth");
 		titleForwardIndex = new InvertedIndex(recman, "titleFI");
@@ -80,7 +82,7 @@ public class Extract_db {
 			
 		
 		//Close the output stream
-		out.close();
+		write.close();
 		recman.close();
 	}
 	
@@ -88,18 +90,18 @@ public class Extract_db {
 		int index = PageIndexer.getIdxNumber(url);
 		
 		System.out.println(Pageppt.getTitle(Integer.toString(index)));
-		out.append(Pageppt.getTitle(Integer.toString(index))+"\n");
+		write.append(Pageppt.getTitle(Integer.toString(index))+"\n");
 		System.out.println(Pageppt.getUrl(Integer.toString(index)));
-		out.append(Pageppt.getUrl(Integer.toString(index))+"\n");
+		write.append(Pageppt.getUrl(Integer.toString(index))+"\n");
 		System.out.println(Pageppt.getLastDate(Integer.toString(index))+","+Pageppt.getPageSize(Integer.toString(index)));
-		out.append(Pageppt.getLastDate(Integer.toString(index))+","+Pageppt.getPageSize(Integer.toString(index))+"\n");
+		write.append(Pageppt.getLastDate(Integer.toString(index))+","+Pageppt.getPageSize(Integer.toString(index))+"\n");
 
 		
 		String WordList = ForwardIndex.getValue(String.valueOf(index));
 		String[] temp = WordList.split(" ");
 		for(int i = 0; i < temp.length;i++){
 			System.out.print(temp[i]+" ");
-			out.append(temp[i]+" ");
+			write.append(temp[i]+" ");
 			String tempID = WordIndexer.getIdx(temp[i]);
 			String str = inverted.getValue(tempID);
 			String[] temp2 = str.split(" ");
@@ -108,22 +110,22 @@ public class Extract_db {
 				int num = Integer.parseInt(temp3[0]);
 				if(index == num){
 					System.out.print(" "+temp3[1]+"; ");
-					out.append(" "+temp3[1]+"; ");
+					write.append(" "+temp3[1]+"; ");
 					break;
 				}
 			}
 		}
 		System.out.println();
-		out.append("\n");
+		write.append("\n");
 		
 		String child = ParentChild.getValue(String.valueOf(index));
 		temp = child.split(" ");
 		for(int i = 0; i < temp.length;i++){
 			System.out.println(PageIndexer.getValue(temp[i]));
-			out.append(PageIndexer.getValue(temp[i])+"\n");
+			write.append(PageIndexer.getValue(temp[i])+"\n");
 		}
 		
 		System.out.println("-------------------------------------------------------------------------------------------");
-		out.append("-------------------------------------------------------------------------------------------\n");
+		write.append("-------------------------------------------------------------------------------------------\n");
 	}
 }

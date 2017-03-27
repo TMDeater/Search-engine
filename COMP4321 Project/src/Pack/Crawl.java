@@ -1,34 +1,31 @@
 package Pack;
 
-import java.text.*;
-import java.util.*;
-
-import org.htmlparser.beans.StringBean;
 import org.htmlparser.Node;
 import org.htmlparser.NodeFilter;
 import org.htmlparser.Parser;
-import org.htmlparser.filters.*;
-import org.htmlparser.nodes.TagNode;
-import org.htmlparser.tags.LinkTag;
+import org.htmlparser.beans.LinkBean;
+import org.htmlparser.beans.StringBean;
+import org.htmlparser.filters.NodeClassFilter;
+import org.htmlparser.tags.TitleTag;
 import org.htmlparser.util.NodeList;
 import org.htmlparser.util.ParserException;
-import org.htmlparser.util.SimpleNodeIterator;
+import org.jsoup.Connection;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Element;
 
-import java.util.StringTokenizer;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import org.htmlparser.beans.LinkBean;
-
+import javax.swing.text.Document;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.Reader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
-
-import org.htmlparser.tags.*;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.StringTokenizer;
+import java.util.Vector;
 
 public class Crawl{
 
@@ -44,11 +41,8 @@ public class Crawl{
   public int pageSize() throws IOException{
     URL website = new URL(url);
     URLConnection webconnect = website.openConnection();
-    BufferedReader buffer = new BufferedReader(
-                          new InputStreamReader(
-                          webconnect.getInputStream()
-                          )
-                          );
+    Reader reader=new InputStreamReader(webconnect.getInputStream(), "utf-8");
+    BufferedReader buffer = new BufferedReader(reader);
     String inLine;
     String now = "";
     while ((inLine = buffer.readLine()) != null){
@@ -68,11 +62,9 @@ public class Crawl{
     DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
     java.util.Date lastdate = new java.util.Date(urlConnect.getLastModified());
     if (urlConnect.getLastModified()==0){
-    	BufferedReader buffer = new BufferedReader(
-                				new InputStreamReader(
-                				urlConnect.getInputStream()
-                				)
-                				);
+
+        Reader reader=new InputStreamReader(urlConnect.getInputStream(), "utf-8");
+        BufferedReader buffer = new BufferedReader(reader);
     	String inLine;
     	String now = "";
     	while ((inLine = buffer.readLine())!=null){
@@ -89,21 +81,29 @@ public class Crawl{
     return dateFormat.format(lastdate);
   }
 
-  public Vector<String> extractWords() throws ParserException
+  public Vector<String> extractWords() throws ParserException, IOException
 
-  	{
+  {
   		// extract words in url and return them
   		// use StringTokenizer to tokenize the result from StringBean
   		// ADD YOUR CODES HERE
-  		Vector<String> result = new Vector<String>();
-  		StringBean bean = new StringBean();
-  		bean.setURL(url);
-  		bean.setLinks(false);
-  		String contents = bean.getStrings();
-  		StringTokenizer st = new StringTokenizer(contents);
-  		while (st.hasMoreTokens()) {
-  		    result.add(st.nextToken());
-  		}
+        org.jsoup.nodes.Document words= Jsoup.parse(new URL(url).openStream(), "utf-8", url);
+        String text = words.body().text();
+        //text=text.replaceAll("[.,?@»'|()]", "");
+        String[] string = text.split(" ");
+        Vector<String> result = new Vector<String>();
+        for(int k=0; k< string.length;k++){
+            result.add(string[k]);
+        }
+//          Vector<String> result = new Vector<String>();
+//  		StringBean bean = new StringBean();
+//  		bean.setURL(url);
+//  		bean.setLinks(false);
+//  		String contents = bean.getStrings();
+//  		StringTokenizer st = new StringTokenizer(contents);
+//  		while (st.hasMoreTokens()) {
+//  		    result.add(st.nextToken());
+//  		}
   		return result;
   	}
 	public Vector<String> extractLinks() throws ParserException
@@ -148,7 +148,7 @@ public class Crawl{
   {
     try
     {
-      Crawl crawler = new Crawl("http://www.cs.ust.hk/~dlee/4321/");
+      Crawl crawler = new Crawl("http://www.cse.ust.hk?lang=hk");
 
 
       Vector<String> words = crawler.extractWords();
@@ -170,7 +170,9 @@ public class Crawl{
     catch (ParserException e)
               {
                   e.printStackTrace ();
-              }
+              } catch (IOException e) {
+        e.printStackTrace();
+    }
 
   }
 

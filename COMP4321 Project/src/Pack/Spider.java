@@ -17,7 +17,7 @@ import jdbm.helper.FastIterator;
 import org.htmlparser.util.ParserException;
 
 public class Spider {
-	private static final int MAX = 300;
+	private static final int MAX = 30;
 	private static int numOfPage = 0;
 	private static StemStop stopStem = new StemStop("D:/Search-engine/COMP4321 Project/src/Pack/stopwords.txt");
 	private static Vector<String> TodoList = new Vector<String>();
