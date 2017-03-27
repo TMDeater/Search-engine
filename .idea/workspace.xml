@@ -2,21 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58ec65ce-19c9-4657-b0f5-ece01fa20ea3" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/COMP4321 Project/lib/jsoup-1.10.2.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/jsoup_1_10_2.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/COMP4321 Project/~$ase 1 Project Description.docx" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/COMP4321 Project/public_html/database.db" afterPath="$PROJECT_DIR$/COMP4321 Project/public_html/database.db" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/Pack/Crawl.class" afterPath="$PROJECT_DIR$/bin/Pack/Crawl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/Pack/Extract_db.class" afterPath="$PROJECT_DIR$/bin/Pack/Extract_db.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/Pack/Spider.class" afterPath="$PROJECT_DIR$/bin/Pack/Spider.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/Pack/StemStop.class" afterPath="$PROJECT_DIR$/bin/Pack/StemStop.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/COMP4321 Project/Phase 1 Project Description.docx" afterPath="$PROJECT_DIR$/COMP4321 Project/Phase 1 Project Description.docx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/COMP4321 Project/src/Pack/Crawl.java" afterPath="$PROJECT_DIR$/COMP4321 Project/src/Pack/Crawl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/COMP4321 Project/src/Pack/Extract_db.java" afterPath="$PROJECT_DIR$/COMP4321 Project/src/Pack/Extract_db.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/COMP4321 Project/src/Pack/Spider.java" afterPath="$PROJECT_DIR$/COMP4321 Project/src/Pack/Spider.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/COMP4321 Project/src/Pack/StemStop.java" afterPath="$PROJECT_DIR$/COMP4321 Project/src/Pack/StemStop.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Search-engine.iml" afterPath="$PROJECT_DIR$/Search-engine.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spider_result.txt" afterPath="$PROJECT_DIR$/spider_result.txt" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -64,8 +51,8 @@
       <file leaf-file-name="spider_result.txt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/spider_result.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-53643">
-              <caret line="184" column="0" lean-forward="false" selection-start-line="184" selection-start-column="0" selection-end-line="184" selection-end-column="29" />
+            <state relative-caret-position="332">
+              <caret line="2606" column="19" lean-forward="false" selection-start-line="2606" selection-start-column="19" selection-end-line="2606" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -774,7 +761,7 @@
       <workItem from="1490510476583" duration="10202000" />
       <workItem from="1490526696186" duration="591000" />
       <workItem from="1490542394951" duration="4291000" />
-      <workItem from="1490604719666" duration="4164000" />
+      <workItem from="1490604719666" duration="4977000" />
     </task>
     <task id="LOCAL-00001" summary="solve some bugs like null title">
       <created>1490458954293</created>
@@ -811,11 +798,18 @@
       <option name="project" value="LOCAL" />
       <updated>1490520943474</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="change extract word library">
+      <created>1490608964740</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1490608964740</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29753000" />
+    <option name="totallyTimeSpent" value="30566000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -871,7 +865,8 @@
     <MESSAGE value="solve some bugs like null title" />
     <MESSAGE value="delete term weight calculation" />
     <MESSAGE value="add catch exception in function and successfully crawl 300 website" />
-    <option name="LAST_COMMIT_MESSAGE" value="add catch exception in function and successfully crawl 300 website" />
+    <MESSAGE value="change extract word library" />
+    <option name="LAST_COMMIT_MESSAGE" value="change extract word library" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1341,8 +1336,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/spider_result.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-53643">
-          <caret line="184" column="0" lean-forward="false" selection-start-line="184" selection-start-column="0" selection-end-line="184" selection-end-column="29" />
+        <state relative-caret-position="332">
+          <caret line="2606" column="19" lean-forward="false" selection-start-line="2606" selection-start-column="19" selection-end-line="2606" selection-end-column="19" />
           <folding />
         </state>
       </provider>
