@@ -24,6 +24,7 @@ import java.net.URLConnection;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
@@ -77,6 +78,7 @@ public class Crawl{
     			return reformatStr;
     		}
     	}
+    	lastdate=new Date(System.currentTimeMillis());
     }
     return dateFormat.format(lastdate);
   }

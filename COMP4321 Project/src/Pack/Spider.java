@@ -1,7 +1,10 @@
 package Pack;
+import jdbm.RecordManager;
+import jdbm.RecordManagerFactory;
+import org.htmlparser.util.ParserException;
+
 import java.io.IOException;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.UnknownHostException;
 import java.text.ParseException;
@@ -9,12 +12,6 @@ import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.Vector;
-
-import jdbm.RecordManager;
-import jdbm.RecordManagerFactory;
-import jdbm.helper.FastIterator;
-
-import org.htmlparser.util.ParserException;
 
 public class Spider {
 	private static final int MAX = 30;
@@ -121,38 +118,48 @@ public class Spider {
 		
 		//crawler
 		Crawl crawler = new Crawl(url);
+
+        //extract last update
+        String date = crawler.lastUpdate();
+
+        //extract pagesize
+        int pageSize = crawler.pageSize();
+
+		//link
 		Vector<String> links = crawler.extractLinks();
-		for(int i = 0; i < links.size(); i++){
-			if(!DoneList.contains(links.elementAt(i))){
-				TodoList.add(links.elementAt(i));
-			}else{
-				links.removeElementAt(i);
-			}
-		}
-		int pageIndex;
+		if (!links.isEmpty()){
+            int j=0;
+            do{
+                checkAndAddList(links, j);
+                j++;
+            }while(j<links.size());
+        }
+
+
+
+		int pgidx;
 		
 		//check contain or not
 		if(PageIndexer.isContain(url) && PageProperty.isContain(PageIndexer.getIdx(url))){
-			pageIndex = PageIndexer.getIdxNumber(url);
-			String date = crawler.lastUpdate();
-			String date2 = PageProperty.getLastDate(Integer.toString(pageIndex));
-			if(date.compareTo(date2)==0){
+			pgidx = PageIndexer.getIdxNumber(url);
+			String temp_date = PageProperty.getLastDate(Integer.toString(pgidx));
+			if(date.compareTo(temp_date)==0){
 				System.out.println("Same as data stored...");
 				return;
 			}else{
 				System.out.println("update information...");
 				//update if last modification date are not same
-				String text = wordForward.getValue(Integer.toString(pageIndex));
+				String text = wordForward.getValue(Integer.toString(pgidx));
 				String[] temp = text.split(" ");
 				for(int i = 0; i < temp.length; i++){
 					System.out.println(temp[i]);
 				}
-				wordForward.delEntry(Integer.toString(pageIndex));
-				PageProperty.delEntry(Integer.toString(pageIndex));
+				wordForward.delEntry(Integer.toString(pgidx));
+				PageProperty.delEntry(Integer.toString(pgidx));
 			}
 		}else{
 			System.out.println("NewPage...");
-			pageIndex = PageIndexer.addEntry(url, Integer.toString(PageIndexer.getLastIdx()));
+			pgidx = PageIndexer.addEntry(url, Integer.toString(PageIndexer.getLastIdx()));
 		}
 		
 		//extract word
@@ -162,30 +169,21 @@ public class Spider {
 			if (!stopStem.isStopWord(words.get(i))){
 				String temp = stopStem.stem(words.get(i));
 				int index = WordIndexer.addEntry(temp, Integer.toString(WordIndexer.getLastIdx()));
-				//Inverted-file index
-				if(!map.containsKey(index)){
-					map.put(index, 1);
-				}else{
-					
-					map.put(index, map.get(index) + 1);
-				}
-				//forward index
-				wordForward.addEntry2(pageIndex+"", temp);
+				//Inverted-file
+				addFreqOrNew(map, index);
+				//forward
+				wordForward.addEntry2(pgidx+"", temp);
 			}
 		}
+
+		//find max freq in a doc
 		Set<Integer> set = map.keySet();
 	    Iterator<Integer> itr = set.iterator();
-	    int max = 0;
-	    while (itr.hasNext()) {
-	      int index = itr.next();
-	      int num = map.get(index);
-	      wordInverted.addEntry(index+"", pageIndex, num);
-	      max = num > max ? num : max;
-	    }
-	    maxTermFreq.addEntry(Integer.toString(pageIndex), Integer.toString(max));
+		int max = findMaxFreq(pgidx, map, itr);
+	    maxTermFreq.addEntry(Integer.toString(pgidx), Integer.toString(max));
 	    
 	    
-		//extract title
+		//title
 		StemStop stopStem = new StemStop("COMP4321 Project/src/Pack/stopwords.txt");
 		String title = "";
 		try{
@@ -194,27 +192,63 @@ public class Spider {
 			if (titleWords.firstElement()!=""){
 				for(int i = 0; i < titleWords.size(); i++){
 					title += titleWords.elementAt(i);
-					if (!stopStem.isStopWord(titleWords.get(i))){
-						int index = TitleIndexer.addEntry(stopStem.stem(titleWords.get(i)), Integer.toString(TitleIndexer.getLastIdx()));
-					}
-				}
+                    stopStemCheckAndPutInTitleIndex(stopStem, titleWords, i);
+                }
 			}
 		}catch(ParserException ex){
 			title = " ";
 		}
 
-		
-		//extract last update
-		String date = crawler.lastUpdate();
-		
-		//extract pagesize
-		int pageSize = crawler.pageSize();
-		PageProperty.addEntry(Integer.toString(pageIndex), title, url, date, pageSize);
-		for(int i = 0; i < links.size(); i++){
-			int pageId = PageIndexer.addEntry(links.elementAt(i),Integer.toString(PageIndexer.getLastIdx()) );
-			ChildParent.addEntry2(Integer.toString(pageId),Integer.toString(pageIndex));
-			ParentChild.addEntry2(Integer.toString(pageIndex), Integer.toString(pageId));
-		}
+
+
+		PageProperty.addEntry(Integer.toString(pgidx), title, url, date, pageSize);
+
+        UpdateChildParentRelationship(links, pgidx);
+
 		TodoList.addAll(links);
+	}
+
+    public static void UpdateChildParentRelationship(Vector<String> links, int pgidx) throws IOException {
+        int k=0;
+        while (k < links.size()){
+            int pageId = PageIndexer.addEntry(links.elementAt(k),Integer.toString(PageIndexer.getLastIdx()) );
+            ChildParent.addEntry2(Integer.toString(pageId),Integer.toString(pgidx));
+            ParentChild.addEntry2(Integer.toString(pgidx), Integer.toString(pageId));
+            k++;
+        }
+    }
+
+    public static void stopStemCheckAndPutInTitleIndex(StemStop stopStem, Vector<String> titleWords, int i) throws IOException {
+        if (!stopStem.isStopWord(titleWords.get(i))){
+            TitleIndexer.addEntry(stopStem.stem(titleWords.get(i)), Integer.toString(TitleIndexer.getLastIdx()));
+        }
+    }
+
+    public static int findMaxFreq(int pgidx, Hashtable<Integer, Integer> map, Iterator<Integer> itr) throws IOException {
+		int max = 0;
+		while (itr.hasNext()) {
+          int idx = itr.next();
+          int num = map.get(idx);
+          wordInverted.addEntry(idx+"", pgidx, num);
+          if (num>max)	max=num;
+          else 			; //do nothing
+        }
+		return max;
+	}
+
+	public static void addFreqOrNew(Hashtable<Integer, Integer> map, int index) {
+		if(map.containsKey(index)){
+            map.put(index, map.get(index) + 1);
+        }else{
+            map.put(index, 1);
+        }
+	}
+
+	public static void checkAndAddList(Vector<String> links, int i) {
+		if(!DoneList.contains(links.elementAt(i))){
+            TodoList.add(links.elementAt(i));
+        }else{
+            links.removeElementAt(i);
+        }
 	}
 }
