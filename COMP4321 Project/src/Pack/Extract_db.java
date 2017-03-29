@@ -75,44 +75,53 @@ public class Extract_db {
 	
 	public static void generatePageInfm(String url) throws IOException{
 		int index = PageIndexer.getIdxNumber(url);
-		
-		System.out.println(Pageppt.getTitle(Integer.toString(index)));
-		write.append(Pageppt.getTitle(Integer.toString(index))+"\n");
-		System.out.println(Pageppt.getUrl(Integer.toString(index)));
-		write.append(Pageppt.getUrl(Integer.toString(index))+"\n");
-		System.out.println(Pageppt.getLastDate(Integer.toString(index))+","+Pageppt.getPageSize(Integer.toString(index)));
-		write.append(Pageppt.getLastDate(Integer.toString(index))+","+Pageppt.getPageSize(Integer.toString(index))+"\n");
+        //title
+		printAndLog(Pageppt.getTitle(Integer.toString(index)), Pageppt.getTitle(Integer.toString(index)) + "\n");
+		//url
+		printAndLog(Pageppt.getUrl(Integer.toString(index)), Pageppt.getUrl(Integer.toString(index))+"\n");
+		//lastdate & page size
+		printAndLog(Pageppt.getLastDate(Integer.toString(index))+","+Pageppt.getPageSize(Integer.toString(index)),
+                Pageppt.getLastDate(Integer.toString(index))+","+Pageppt.getPageSize(Integer.toString(index))+"\n");
 
 		
 		String WordList = ForwardIndex.getValue(String.valueOf(index));
+		//forward: m m m m
+        //m:
+        //inverted(temp2): pageindx:freq | pageindx:freq | pageindx:freq |
 		String[] temp = WordList.split(" ");
 		for(int i = 0; i < temp.length;i++){
 			System.out.print(temp[i]+" ");
 			write.append(temp[i]+" ");
-			String tempID = WordIndexer.getIdx(temp[i]);
-			String str = inverted.getValue(tempID);
-			String[] temp2 = str.split(" ");
-			for(int j = 0 ; j < temp2.length;j++){
-				String[] temp3 = temp2[j].split(":");
-				int num = Integer.parseInt(temp3[0]);
-				if(index == num){
-					System.out.print(" "+temp3[1]+"; ");
-					write.append(" "+temp3[1]+"; ");
-					break;
-				}
-			}
-		}
-		System.out.println();
+			String[] temp2 = inverted.getValue(WordIndexer.getIdx(temp[i])).split(" ");
+            splitColonAndPrintFreq(index, temp2);
+        }
+
 		write.append("\n");
 		
 		String child = ParentChild.getValue(String.valueOf(index));
 		temp = child.split(" ");
 		for(int i = 0; i < temp.length;i++){
-			System.out.println(PageIndexer.getValue(temp[i]));
-			write.append(PageIndexer.getValue(temp[i])+"\n");
+			printAndLog(PageIndexer.getValue(temp[i]), PageIndexer.getValue(temp[i])+"\n");
 		}
-		
-		System.out.println("-------------------------------------------------------------------------------------------");
-		write.append("-------------------------------------------------------------------------------------------\n");
+
+		printAndLog("-------------------------------------------------------------------------------------------",
+				"-------------------------------------------------------------------------------------------\n");
+	}
+
+    public static void splitColonAndPrintFreq(int index, String[] temp2) throws IOException {
+        for(int j = 0 ; j < temp2.length;j++){
+            String[] temp3 = temp2[j].split(":");
+            int num = Integer.parseInt(temp3[0]);
+            if(index == num){
+                System.out.print(" "+temp3[1]+"; ");
+                write.append(" "+temp3[1]+"; ");
+                break;
+            }
+        }
+    }
+
+    public static void printAndLog(String title, String csq) throws IOException {
+		System.out.println(title);
+		write.append(csq);
 	}
 }

@@ -52,28 +52,29 @@ public class Spider {
 					TodoList.removeElementAt(0);
 					continue;
 				}
-				else if (TodoList.firstElement().contains("http://www.cse.ust.hk/ug/hkust_only") ){
-					TodoList.removeElementAt(0);
-					int pageIndex = PageIndexer.getIdxNumber("http://www.cse.ust.hk/ug/hkust_only");
-					wordForward.delEntry(Integer.toString(pageIndex));
-					PageProperty.delEntry(Integer.toString(pageIndex));
-					//numOfPage--;
-					continue;
-				}
-				else if (TodoList.firstElement().contains("http://www.cse.ust.hk/pg/hkust_only") ){
-					TodoList.removeElementAt(0);
-					int pageIndex = PageIndexer.getIdxNumber("http://www.cse.ust.hk/pg/hkust_only");
-					wordForward.delEntry(Integer.toString(pageIndex));
-					PageProperty.delEntry(Integer.toString(pageIndex));
-					//numOfPage--;
-					continue;
-				}
+//				else if (TodoList.firstElement().contains("http://www.cse.ust.hk/ug/hkust_only") ){
+//					TodoList.removeElementAt(0);
+//					int pageIndex = PageIndexer.getIdxNumber("http://www.cse.ust.hk/ug/hkust_only");
+//					wordForward.delEntry(Integer.toString(pageIndex));
+//					PageProperty.delEntry(Integer.toString(pageIndex));
+//					//numOfPage--;
+//					continue;
+//				}
+//				else if (TodoList.firstElement().contains("http://www.cse.ust.hk/pg/hkust_only") ){
+//					TodoList.removeElementAt(0);
+//					int pageIndex = PageIndexer.getIdxNumber("http://www.cse.ust.hk/pg/hkust_only");
+//					wordForward.delEntry(Integer.toString(pageIndex));
+//					PageProperty.delEntry(Integer.toString(pageIndex));
+//					//numOfPage--;
+//					continue;
+//				}
 				else if(fetchable(TodoList.firstElement())==false){
 					TodoList.removeElementAt(0);
 					int pageIndex = PageIndexer.getIdxNumber(TodoList.firstElement());
 					wordForward.delEntry(Integer.toString(pageIndex));
 					PageProperty.delEntry(Integer.toString(pageIndex));
 					System.out.println("Exception encountered or HTTP response other than 200 for: "+TodoList.firstElement());
+					//numOfPage--;
 					continue;
 				}
 				else{
@@ -84,7 +85,7 @@ public class Spider {
 			}
 			
 			recman.commit();
-			PageProperty.printAll();
+			//PageProperty.printAll();
 			recman.close();
 			System.out.println("\nFinished");
 		}
