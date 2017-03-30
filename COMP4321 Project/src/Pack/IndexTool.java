@@ -16,28 +16,37 @@ public class IndexTool{
   private HTree hashtable2;
   private int lastIdx;
 
-  public IndexTool(RecordManager recman_1, String objName) throws IOException{
-    recman = recman_1;
+  public IndexTool(RecordManager recordingManger, String objName) throws IOException{
+    recman = recordingManger;
+
     long recid1 = recman.getNamedObject(objName+"1");
     long recid2 = recman.getNamedObject(objName+"2");
     long recid3 = recman.getNamedObject(objName+"Size");
 
 //憒�ecord���店
     if (recid1 != 0){
-      hashtable1 = HTree.load(recman, recid1);
-      hashtable2 = HTree.load(recman, recid2);
-      lastIdx = (Integer)recman.fetch(recid3);
+        loadHashtableAndSetLastIndex(recid1, recid2, recid3);
     }else{
-      hashtable1 = HTree.createInstance(recman);
-			recman.setNamedObject(objName+"1", hashtable1.getRecid());
-			hashtable2 = HTree.createInstance(recman);
-			recman.setNamedObject(objName+"2", hashtable2.getRecid());
-			long recid4 = recman.insert(new Integer(0));
-			recman.setNamedObject(objName+"Size",recid4);
+        createTwoHashtable(objName);
+        long recid4 = recman.insert(new Integer(0));
+        recman.setNamedObject(objName+"Size",recid4);
     }
   }
 
-  public int getLastIdx(){  return lastIdx; }
+    private void createTwoHashtable(String objName) throws IOException {
+        hashtable1 = HTree.createInstance(recman);
+        recman.setNamedObject(objName+"1", hashtable1.getRecid());
+        hashtable2 = HTree.createInstance(recman);
+        recman.setNamedObject(objName+"2", hashtable2.getRecid());
+    }
+
+    private void loadHashtableAndSetLastIndex(long recid1, long recid2, long recid3) throws IOException {
+        hashtable1 = HTree.load(recman, recid1);
+        hashtable2 = HTree.load(recman, recid2);
+        lastIdx = (Integer)recman.fetch(recid3);
+    }
+
+    public int getLastIdx(){  return lastIdx; }
 
   public void finish() throws IOException{
     recman.commit();
@@ -58,10 +67,14 @@ public class IndexTool{
 			return getIdxNumber(word);
 		}
     // false, insert to the inverted file;
+	  putInForwardAndBackwardHashtable(word, word2);
+	  lastIdx++;
+	  return  Integer.parseInt(word2);
+	}
+
+	private void putInForwardAndBackwardHashtable(String word, String word2) throws IOException {
 		hashtable1.put(word, word2);
 		hashtable2.put(word2, word);
-		lastIdx++;
-	  return  Integer.parseInt(word2);
 	}
 
 	public void delEntry(String word) throws IOException {
