@@ -9,6 +9,7 @@ import org.htmlparser.filters.NodeClassFilter;
 import org.htmlparser.tags.TitleTag;
 import org.htmlparser.util.NodeList;
 import org.htmlparser.util.ParserException;
+import org.jetbrains.annotations.NotNull;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
@@ -44,10 +45,10 @@ public class Crawl{
     URLConnection webconnect = website.openConnection();
     Reader reader=new InputStreamReader(webconnect.getInputStream(), "utf-8");
     BufferedReader buffer = new BufferedReader(reader);
-    String inLine;
+    String readLine;
     String now = "";
-    while ((inLine = buffer.readLine()) != null){
-      now = now + inLine;
+    while ((readLine = buffer.readLine()) != null){
+      now = now + readLine;
     }
     buffer.close();
     //close before return
@@ -92,11 +93,7 @@ public class Crawl{
         org.jsoup.nodes.Document words= Jsoup.parse(new URL(url).openStream(), "utf-8", url);
         String text = words.body().text();
         //text=text.replaceAll("[.,?@»'|()]", "");
-        String[] string = text.split(" ");
-        Vector<String> result = new Vector<String>();
-        for(int k=0; k< string.length;k++){
-            result.add(string[k]);
-        }
+      Vector<String> result = splitAndPutInVector(text);
 //          Vector<String> result = new Vector<String>();
 //  		StringBean bean = new StringBean();
 //  		bean.setURL(url);
@@ -124,6 +121,10 @@ public class Crawl{
 	}
 
 
+    //filter the titletag
+    //check the nodelist into an array
+    //check the singleNode is titletag and put it into variable called line
+    //split the title by " " and return vector
   public Vector<String> getTitle() throws ParserException{
     Parser pars = new Parser(url);
     pars.setEncoding("UTF-8");
@@ -138,15 +139,21 @@ public class Crawl{
         line = title.getTitle();
       }
     }
-    String[] string = line.split(" ");
-    Vector<String> vector = new Vector<String>();
-    for(int k=0; k< string.length;k++){
-      vector.add(string[k]);
-    }
+      Vector<String> vector = splitAndPutInVector(line);
     return vector;
   }
 
-  public static void main (String[] args)
+    @NotNull
+    private Vector<String> splitAndPutInVector(String line) {
+        String[] string = line.split(" ");
+        Vector<String> vector = new Vector<String>();
+        for(int k=0; k< string.length;k++){
+          vector.add(string[k]);
+        }
+        return vector;
+    }
+
+    public static void main (String[] args)
   {
     try
     {
