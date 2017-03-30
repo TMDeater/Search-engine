@@ -134,14 +134,19 @@ public class Crawl{
     String line ="";
     for (int i=0;i<node.length; i++){
       Node sgNode = node[i];
-      if (sgNode instanceof TitleTag){
-        TitleTag title = (TitleTag) sgNode;
-        line = title.getTitle();
-      }
+        line = findTheTitleTagInNode(line, sgNode);
     }
       Vector<String> vector = splitAndPutInVector(line);
     return vector;
   }
+
+    private String findTheTitleTagInNode(String line, Node sgNode) {
+        if (sgNode instanceof TitleTag){
+          TitleTag title = (TitleTag) sgNode;
+          line = title.getTitle();
+        }
+        return line;
+    }
 
     @NotNull
     private Vector<String> splitAndPutInVector(String line) {
