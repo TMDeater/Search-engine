@@ -44,27 +44,27 @@ public class Webpage implements Comparable<Webpage>{
 		else				{return 0;}
 		//1:less score ; 0:equal score ; -1:higher score
 	}
-
-	public String showInfm(){
-		String infm = score+"\t";infm += title+"\n";
-		infm += "\t"+url+"\n";
-		infm += "\t"+lastUpdate+","+pageSize+"\n";
-		infm += "\t";
-		for(int i = 0; i < keyword.size(); i++){
-			Word word = keyword.elementAt(i);
-			infm += word.getText()+" "+word.getFreq()+"; ";
-		}
-		infm+="\n";
-		infm+="\t";
-		for(int i = 0; i < ParentLk.size(); i++){
-			infm += ParentLk.elementAt(i)+"\n";
-		}
-		infm+="\t";
-		for(int i = 0; i < ChildLk.size(); i++){
-			infm += ChildLk.elementAt(i)+"\n";
-		}
-		return infm+"\n";
-	}
+//this is a function reserve for future if need
+//	public String showInfm(){
+//		String infm = score+"\t";infm += title+"\n";
+//		infm += "\t"+url+"\n";
+//		infm += "\t"+lastUpdate+","+pageSize+"\n";
+//		infm += "\t";
+//		for(int i = 0; i < keyword.size(); i++){
+//			Word word = keyword.elementAt(i);
+//			infm += word.getText()+" "+word.getFreq()+"; ";
+//		}
+//		infm+="\n";
+//		infm+="\t";
+//		for(int i = 0; i < ParentLk.size(); i++){
+//			infm += ParentLk.elementAt(i)+"\n";
+//		}
+//		infm+="\t";
+//		for(int i = 0; i < ChildLk.size(); i++){
+//			infm += ChildLk.elementAt(i)+"\n";
+//		}
+//		return infm+"\n";
+//	}
 
 	@Override
 	public int compareTo(Webpage arg0) {

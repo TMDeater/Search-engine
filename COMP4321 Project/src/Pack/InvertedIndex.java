@@ -2,10 +2,9 @@
 package Pack;
 
 import jdbm.RecordManager;
-import jdbm.RecordManagerFactory;
 import jdbm.htree.HTree;
 import jdbm.helper.FastIterator;
-import java.util.Vector;
+
 import java.io.IOException;
 import java.io.Serializable;
 
@@ -16,19 +15,23 @@ public class InvertedIndex
 
     InvertedIndex(RecordManager recman2, String objectname) throws IOException
     {
-    	recman = recman2;;
+    	recman = recman2;
         long recid = recman.getNamedObject(objectname);
 
-        if (recid != 0)
+		loadOrCreateHashtable(objectname, recid);
+	}
+
+	private void loadOrCreateHashtable(String objectname, long recid) throws IOException {
+		if (recid != 0)
             hashtable = HTree.load(recman, recid);
         else
         {
             hashtable = HTree.createInstance(recman);
             recman.setNamedObject( objectname, hashtable.getRecid() );
         }
-    }
+	}
 
-    public void finish() throws IOException
+	public void finish() throws IOException
     {
         recman.commit();
         recman.close();
@@ -85,8 +88,7 @@ public class InvertedIndex
   		if (hashtable.get(word) != null) {
   			String wordEntry = (String) hashtable.get(word);
         //get "word" list and count
-  			String[] temp = wordEntry.split(" ");
-  			return temp.length;
+  			return wordEntry.split(" ").length;
   		}
   		else  return 0;
   	}

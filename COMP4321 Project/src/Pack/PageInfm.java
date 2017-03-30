@@ -31,6 +31,10 @@ public class PageInfm {
 		this.recman = recman;
 		long recid = recman.getNamedObject(objectname);
 
+		checkOrCreateHashtable(recman, objectname, recid);
+	}
+
+	private void checkOrCreateHashtable(RecordManager recman, String objectname, long recid) throws IOException {
 		if (recid != 0) {
 			hashtable = HTree.load(recman, recid);
 		}
@@ -40,7 +44,7 @@ public class PageInfm {
 			recman.setNamedObject(objectname, hashtable.getRecid());
 		}
 	}
-	
+
 	public boolean isContain(String word) throws IOException{
 		return hashtable.get(word)!=null;
 	}
@@ -103,7 +107,7 @@ public class PageInfm {
 		String key;
 		while ((key = (String) iter.next()) != null) {
 			Infm temp = (Infm)hashtable.get(key);
-			System.out.println(key + ": " + temp.title+","+temp.url+","+temp.lastModifyDate+","+temp.size);
+			System.out.println(key + ": " + temp.title+","+temp.url+", last modified: "+temp.lastModifyDate+", size: "+temp.size);
 		}
 	}
 }
