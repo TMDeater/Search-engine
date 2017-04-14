@@ -86,18 +86,7 @@ public class Spider {
 			}
 
 			//calculate termWeight
-			FastIterator iterator =  wordInverted.AllKey();
-			String invertedIndexKey;
-			while ((invertedIndexKey = (String) iterator.next()) != null) {
-				int documentFrequency = wordInverted.numOfElement(invertedIndexKey);
-				for(int i = 0; i < documentFrequency ; i++){
-					String[] temp = wordInverted.getElement(invertedIndexKey, i).split(":");
-					int maxTermFrequency = maxTermFreq.getIdxNumber(temp[0]);
-					int termFrequency = Integer.parseInt((temp[1]));
-					double weight = calculateTermWeight(termFrequency, maxTermFrequency, documentFrequency, MAX);
-					termW.addEntry2(invertedIndexKey, temp[0]+":"+weight);
-				}
-			}
+			calculateAllTermWeight();
 			
 			recman.commit();
 			//PageProperty.printAll();
@@ -108,6 +97,26 @@ public class Spider {
 		{
 			e.printStackTrace ();
 		}
+	}
+
+	private static void calculateAllTermWeight() throws IOException {
+		FastIterator iterator =  wordInverted.AllKey();
+		String invertedIndexKey;
+		while ((invertedIndexKey = (String) iterator.next()) != null) {
+            //documentFrequency is the number of document contain the word_t
+			int documentFrequency = wordInverted.numOfElement(invertedIndexKey);
+            for(int i = 0; i < documentFrequency ; i++){
+                //temp[0] is the word
+                //temp[1] is the termfrequency
+                //get the max term frequency from the getIndexNumber(word)
+                String[] temp = wordInverted.getElement(invertedIndexKey, i).split(":");
+                int maxTermFrequency = maxTermFreq.getIdxNumber(temp[0]);
+                //As the termfrequency get from the database is string, so we need to change the string to interger
+                int termFrequency = Integer.parseInt(temp[1]);
+                double weight = calculateTermWeight(termFrequency, maxTermFrequency, documentFrequency, MAX);
+                termW.addEntry2(invertedIndexKey, temp[0]+":"+weight);
+            }
+        }
 	}
 
 	public static boolean fetchable(String link) throws IOException {

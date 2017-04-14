@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="58ec65ce-19c9-4657-b0f5-ece01fa20ea3" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/COMP4321 Project/src/Pack/SearchTool.java" afterPath="$PROJECT_DIR$/COMP4321 Project/src/Pack/SearchTool.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/COMP4321 Project/src/Pack/Spider.java" afterPath="$PROJECT_DIR$/COMP4321 Project/src/Pack/Spider.java" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
@@ -32,10 +31,10 @@
       <file leaf-file-name="Spider.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/COMP4321 Project/src/Pack/Spider.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
-              <caret line="96" column="74" lean-forward="false" selection-start-line="96" selection-start-column="71" selection-end-line="96" selection-end-column="74" />
+            <state relative-caret-position="274">
+              <caret line="114" column="52" lean-forward="false" selection-start-line="114" selection-start-column="52" selection-end-line="114" selection-end-column="52" />
               <folding>
-                <marker date="1492170071072" expanded="true" signature="9045:9048" ph="{...}" />
+                <marker date="1492171461969" expanded="true" signature="9568:9571" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -790,7 +789,7 @@
       <workItem from="1490604719666" duration="5046000" />
       <workItem from="1490615258217" duration="1339000" />
       <workItem from="1492161240995" duration="2863000" />
-      <workItem from="1492164591864" duration="3039000" />
+      <workItem from="1492164591864" duration="4419000" />
     </task>
     <task id="LOCAL-00001" summary="solve some bugs like null title">
       <created>1490458954293</created>
@@ -855,11 +854,18 @@
       <option name="project" value="LOCAL" />
       <updated>1492168047492</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="add term weight to spider.java">
+      <created>1492170097287</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1492170097287</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37876000" />
+    <option name="totallyTimeSpent" value="39256000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -919,7 +925,8 @@
     <MESSAGE value="edit word document" />
     <MESSAGE value="add readme.txt" />
     <MESSAGE value="add searchTool.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="add searchTool.java" />
+    <MESSAGE value="add term weight to spider.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="add term weight to spider.java" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -974,7 +981,7 @@
         <state relative-caret-position="3451">
           <caret line="203" column="24" lean-forward="false" selection-start-line="203" selection-start-column="24" selection-end-line="203" selection-end-column="24" />
           <folding>
-            <marker date="1492170071072" expanded="true" signature="9045:9048" ph="{...}" />
+            <marker date="1492171461969" expanded="true" signature="9568:9571" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1007,7 +1014,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1492170071072" expanded="true" signature="9045:9048" ph="{...}" />
+            <marker date="1492171461969" expanded="true" signature="9568:9571" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1069,7 +1076,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1492170071072" expanded="true" signature="9045:9048" ph="{...}" />
+            <marker date="1492171461969" expanded="true" signature="9568:9571" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1131,7 +1138,7 @@
         <state relative-caret-position="2992">
           <caret line="189" column="0" lean-forward="false" selection-start-line="189" selection-start-column="0" selection-end-line="189" selection-end-column="0" />
           <folding>
-            <marker date="1492170071072" expanded="true" signature="9045:9048" ph="{...}" />
+            <marker date="1492171461969" expanded="true" signature="9568:9571" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1351,10 +1358,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/COMP4321 Project/src/Pack/Spider.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="96" column="74" lean-forward="false" selection-start-line="96" selection-start-column="71" selection-end-line="96" selection-end-column="74" />
+        <state relative-caret-position="274">
+          <caret line="114" column="52" lean-forward="false" selection-start-line="114" selection-start-column="52" selection-end-line="114" selection-end-column="52" />
           <folding>
-            <marker date="1492170071072" expanded="true" signature="9045:9048" ph="{...}" />
+            <marker date="1492171461969" expanded="true" signature="9568:9571" ph="{...}" />
           </folding>
         </state>
       </provider>
