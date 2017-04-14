@@ -1,6 +1,7 @@
 package Pack;
 import jdbm.RecordManager;
 import jdbm.RecordManagerFactory;
+import jdbm.helper.FastIterator;
 import org.htmlparser.util.ParserException;
 
 import java.io.IOException;
@@ -29,6 +30,7 @@ public class Spider {
 	private static InvertedIndex ParentChild;
 	private static PageInfm PageProperty;
 	private static IndexTool maxTermFreq;
+	private static InvertedIndex termW;
 
 	public static void main(String[] args) throws IOException, ParseException{
 		
@@ -81,7 +83,20 @@ public class Spider {
 					fetchPages(TodoList.firstElement());
 					TodoList.removeElementAt(0);
 				}
-				
+			}
+
+			//calculate termWeight
+			FastIterator iterator =  wordInverted.AllKey();
+			String invertedIndexKey;
+			while ((invertedIndexKey = (String) iterator.next()) != null) {
+				int documentFrequency = wordInverted.numOfElement(invertedIndexKey);
+				for(int i = 0; i < documentFrequency ; i++){
+					String[] temp = wordInverted.getElement(invertedIndexKey, i).split(":");
+					int maxTermFrequency = maxTermFreq.getIdxNumber(temp[0]);
+					int termFrequency = Integer.parseInt((temp[1]));
+					double weight = calculateTermWeight(termFrequency, maxTermFrequency, documentFrequency, MAX);
+					termW.addEntry2(invertedIndexKey, temp[0]+":"+weight);
+				}
 			}
 			
 			recman.commit();
@@ -251,5 +266,10 @@ public class Spider {
         }else{
             links.removeElementAt(i);
         }
+	}
+
+	public static double calculateTermWeight(double tf, double maxTf, double numOfDoc, double maxOfDoc){
+		double idf = Math.log(maxOfDoc/numOfDoc)/Math.log(2);
+		return (tf*idf)/maxTf;
 	}
 }

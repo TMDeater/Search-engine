@@ -57,11 +57,13 @@ public class SearchTool {
     public Vector<Webpage> search(Vector<String> keywords) throws IOException{
         //check if the keyword is stopword and add into keyword value
         Vector<String> keywordValue = new Vector<String>();
-        for(int i = 0; i < keywords.size(); i++){
-            String word = keywords.elementAt(i);
+        int keywordNumber=0;
+        while (keywordNumber< keywords.size()){
+            String word = keywords.elementAt(keywordNumber);
             if (!stopStem.isStopWord(word)){
                 keywordValue.add(WordIdxr.getIdx(stopStem.stem(word)));
             }
+            keywordNumber++;
         }
 
         //loop weight
