@@ -67,87 +67,111 @@ public class SearchTool {
         }
 
         //loop weight
+        //get the term weight first into wordAndWeight
+        //Then split the ":" into word and weight
+        //map for normal weight
+        //mapForCalSquare for the square of the weight
         Hashtable<String, Double> map = new Hashtable<String,Double>();
-        Hashtable<String, Double> map2 = new Hashtable<String,Double>();
-        for(int i = 0; i< keywordValue.size(); i++){
-            String[] temp = termWeight.getValue(keywordValue.elementAt(i)).split(" ");
-            for(int j = 0; j < temp.length; j++){
-                String[] temp2 = temp[j].split(":");
-                if(!map.containsKey(temp2[0])){
-                    double v2 = Double.parseDouble(temp2[1])*Double.parseDouble(temp2[1]);
-                    double v1 = Double.parseDouble(temp2[1]);
-                    map.put(temp2[0], v1);
-                    map2.put(temp2[0], v2);
-                }else{
-                    double v2 = map2.get(temp2[0]) + Double.parseDouble(temp2[1])*Double.parseDouble(temp2[1]);
-                    double v1 = map2.get(temp2[0]) + Double.parseDouble(temp2[1]);
-                    map.put(temp2[0], v1);
-                    map2.put(temp2[0], v2);
-                    //System.out.println(v1 + " "+v2);
-                }
-            }
+        Hashtable<String, Double> mapForCalSquare = new Hashtable<String,Double>();
+        SumOfWeightForEachDoc(keywordValue, map, mapForCalSquare);
+        
+        Set<String> set = mapForCalSquare.keySet();
+        Iterator<String> iterator = set.iterator();
+        //calculate the square root of the weight of different doc
+        while (iterator.hasNext()) {
+            String index = iterator.next();
+            mapForCalSquare.put(index, Math.sqrt(mapForCalSquare.get(index)));
         }
-        Set<String> set = map2.keySet();
-        Iterator<String> itr = set.iterator();
-        while (itr.hasNext()) {
-            String index = itr.next();
-            map2.put(index, Math.sqrt(map2.get(index)));
-        }
-        set = map2.keySet();
-        itr = set.iterator();
+        //***************this may can be removed
+        set = mapForCalSquare.keySet();
+        iterator = set.iterator();
+        //***********************
         Vector<Webpage> result = new Vector<Webpage>();
-        while (itr.hasNext()) {
-            String index = itr.next();
-            double totalScore = map.get(index)/(map2.get(index) * Math.sqrt(keywordValue.size()));
-            //System.out.println(map.get(index)+", "+map2.get(index)+", "+map3.get(index)+"\n"+totalScore);
+        while (iterator.hasNext()) {
+            String index = iterator.next();
+            double totalScore = map.get(index)/(mapForCalSquare.get(index) * Math.sqrt(keywordValue.size()));
             result.add(toWebpage(index,totalScore));
         }
+        //final calculation
+        //score = sum(weight) / ( sqrt(sum(weight^2)) * sqrt(queryLength^2) )
+        //                                                 ^note that the query weight is set to be 1 so no need to calculate the square
+        //sortting the result in decending order so it can be view and get the best page
         Collections.sort(result);
         return result;
     }
 
-    public static Webpage toWebpage(String index, Double score) throws IOException{
-        Webpage result = new Webpage();
-        result.setScore(score);
-        result.setTitle(Pageinfm.getTitle(index));
-        result.setURL(Pageinfm.getUrl(index));
-        result.setLastUpdate(Pageinfm.getLastDate(index));
-        result.setPageSize(Pageinfm.getPageSize(index));
-
-        //keywords
-        String WordList = ForwardIdx.getValue(index);
-        String[] temp = WordList.split(" ");
-        for(int i = 0; i < temp.length;i++){
-            Word a = new Word();
-            a.setText(temp[i]);
-            String str = invertedIdx.getValue(WordIdxr.getIdx(temp[i]));
-            String[] temp2 = str.split(" ");
-            for(int j = 0 ; j < temp2.length;j++){
-                String[] temp3 = temp2[j].split(":");
-                if(index.compareTo(temp3[0])==0){
-                    a.setFreq(Integer.parseInt(temp3[1]));
-                    result.addKeyword(a);
-                    break;
+    private void SumOfWeightForEachDoc(Vector<String> keywordValue, Hashtable<String, Double> map, Hashtable<String, Double> mapForCalSquare) throws IOException {
+        for(int i = 0; i< keywordValue.size(); i++){
+            String[] docIDAndWeight = termWeight.getValue(keywordValue.elementAt(i)).split(" ");
+            for(int j = 0; j < docIDAndWeight.length; j++){
+                String[] splittedIDAndWeight = docIDAndWeight[j].split(":");
+                //splittedIDAndWeight[0] is the docID,
+                //splittedIDAndWeight[1] is the weight
+                double weightVal = Double.parseDouble(splittedIDAndWeight[1]);
+                String docIDString = splittedIDAndWeight[0];
+                if(!map.containsKey(docIDString)){
+                    double weightSquare = weightVal * weightVal;
+                    double weight = weightVal;
+                    map.put(docIDString, weight);
+                    mapForCalSquare.put(docIDString, weightSquare);
+                }else{
+                    //the word already exist in the map so add the weight to the map's value
+                    double weightSquare = mapForCalSquare.get(docIDString) + weightVal * weightVal;
+                    double weight = mapForCalSquare.get(docIDString) + weightVal;
+                    map.put(docIDString, weight);
+                    mapForCalSquare.put(docIDString, weightSquare);
                 }
             }
         }
-        result.sortKeyword();
+    }
+
+    public static Webpage toWebpage(String index, Double score) throws IOException{
+        Webpage pageResult = new Webpage();
+        pageResult.setScore(score);
+        pageResult.setTitle(Pageinfm.getTitle(index));
+        pageResult.setURL(Pageinfm.getUrl(index));
+        pageResult.setLastUpdate(Pageinfm.getLastDate(index));
+        pageResult.setPageSize(Pageinfm.getPageSize(index));
+
+        //keywords
+        WordsAndWordFreqForPage(index, pageResult);
 
         //child Links
         String child = ParChild.getValue(index);
-        temp = child.split(" ");
-        for(int i = 0; i < temp.length;i++){
-            result.addChildLk(PageIdxr.getValue(temp[i]));
+        String[] childLinkArray = child.split(" ");
+        for(int i = 0; i < childLinkArray.length;i++){
+            pageResult.addChildLk(PageIdxr.getValue(childLinkArray[i]));
         }
 
         //parent Links
         String par = ChildPar.getValue(index);
-        temp = par.split(" ");
-        for(int i = 0; i < temp.length;i++){
-            result.addParentLk(PageIdxr.getValue(temp[i]));
+        String[] parentLinkArray = par.split(" ");
+        for(int i = 0; i < parentLinkArray.length;i++){
+            pageResult.addParentLk(PageIdxr.getValue(parentLinkArray[i]));
         }
 
 
-        return result;
+        return pageResult;
+    }
+
+    private static void WordsAndWordFreqForPage(String index, Webpage pageResult) throws IOException {
+        String WordList = ForwardIdx.getValue(index);
+        //temp is docID to keywords
+        String[] arrayOfKeywords = WordList.split(" ");
+        for(int i = 0; i < arrayOfKeywords.length;i++){
+            Word a = new Word();
+            a.setText(arrayOfKeywords[i]);
+            String docIDAndFreqArray = invertedIdx.getValue(WordIdxr.getIdx(arrayOfKeywords[i]));
+            String[] docIDAndFreqPair = docIDAndFreqArray.split(" ");
+            for(int j = 0 ; j < docIDAndFreqPair.length;j++){
+                String[] docIDAndFreq = docIDAndFreqPair[j].split(":");
+                if(index.compareTo(docIDAndFreq[0])==0){
+                    a.setFreq(Integer.parseInt(docIDAndFreq[1]));
+                    pageResult.addKeyword(a);
+                    break;
+                }
+            }
+        }
+        pageResult.sortKeyword();
     }
 }

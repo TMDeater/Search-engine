@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="58ec65ce-19c9-4657-b0f5-ece01fa20ea3" name="Default" comment="">
+    <list default="true" id="58ec65ce-19c9-4657-b0f5-ece01fa20ea3" name="Default" comment="refactor a little spider.java">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/COMP4321 Project/src/Pack/Spider.java" afterPath="$PROJECT_DIR$/COMP4321 Project/src/Pack/Spider.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/COMP4321 Project/problem.txt" afterPath="$PROJECT_DIR$/COMP4321 Project/problem.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/COMP4321 Project/src/Pack/SearchTool.java" afterPath="$PROJECT_DIR$/COMP4321 Project/src/Pack/SearchTool.java" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,10 +29,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Spider.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Spider.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/COMP4321 Project/src/Pack/Spider.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
+            <state relative-caret-position="0">
               <caret line="114" column="52" lean-forward="false" selection-start-line="114" selection-start-column="52" selection-end-line="114" selection-end-column="52" />
               <folding>
                 <marker date="1492171461969" expanded="true" signature="9568:9571" ph="{...}" />
@@ -43,24 +44,20 @@
       <file leaf-file-name="Extract_db.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/COMP4321 Project/src/Pack/Extract_db.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
+            <state relative-caret-position="0">
               <caret line="30" column="76" lean-forward="false" selection-start-line="30" selection-start-column="59" selection-end-line="30" selection-end-column="76" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SearchTool.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SearchTool.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/COMP4321 Project/src/Pack/SearchTool.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1084">
-              <caret line="71" column="24" lean-forward="false" selection-start-line="71" selection-start-column="23" selection-end-line="71" selection-end-column="24" />
+            <state relative-caret-position="696">
+              <caret line="76" column="8" lean-forward="false" selection-start-line="76" selection-start-column="8" selection-end-line="76" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2215#2223#0" expanded="true" />
-                <element signature="e#2611#2626#0" expanded="true" />
-                <element signature="e#2684#2699#0" expanded="true" />
-                <element signature="e#3964#3973#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -69,7 +66,7 @@
       <file leaf-file-name="Crawl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/COMP4321 Project/src/Pack/Crawl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1649">
+            <state relative-caret-position="0">
               <caret line="128" column="33" lean-forward="false" selection-start-line="128" selection-start-column="33" selection-end-line="128" selection-end-column="33" />
               <folding />
             </state>
@@ -108,6 +105,8 @@
       <find>result</find>
       <find>termWeight</find>
       <find>MAX</find>
+      <find>sort</find>
+      <find>ForwardIdx</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -129,8 +128,8 @@
         <option value="$PROJECT_DIR$/COMP4321 Project/src/Pack/StemStop.java" />
         <option value="$PROJECT_DIR$/COMP4321 Project/src/Pack/Crawl.java" />
         <option value="$PROJECT_DIR$/COMP4321 Project/src/Pack/Extract_db.java" />
-        <option value="$PROJECT_DIR$/COMP4321 Project/src/Pack/SearchTool.java" />
         <option value="$PROJECT_DIR$/COMP4321 Project/src/Pack/Spider.java" />
+        <option value="$PROJECT_DIR$/COMP4321 Project/src/Pack/SearchTool.java" />
       </list>
     </option>
   </component>
@@ -141,13 +140,13 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="804" />
-    <option name="y" value="24" />
-    <option name="width" value="1123" />
-    <option name="height" value="1000" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
+    <navigator proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -160,136 +159,12 @@
       <manualOrder />
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Search-engine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Search-engine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Search-engine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Search-engine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="COMP4321 Project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Search-engine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Search-engine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="COMP4321 Project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Pack" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Search-engine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Search-engine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="COMP4321 Project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Pack" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PageInfm.java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Search-engine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Search-engine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="COMP4321 Project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Pack" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="InvertedIndex.java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Search-engine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Search-engine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="COMP4321 Project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Console Font" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Font" />
     <property name="extract.method.default.visibility" value="private" />
   </component>
   <component name="RecentsManager">
@@ -789,7 +664,8 @@
       <workItem from="1490604719666" duration="5046000" />
       <workItem from="1490615258217" duration="1339000" />
       <workItem from="1492161240995" duration="2863000" />
-      <workItem from="1492164591864" duration="4419000" />
+      <workItem from="1492164591864" duration="4871000" />
+      <workItem from="1492253209225" duration="4654000" />
     </task>
     <task id="LOCAL-00001" summary="solve some bugs like null title">
       <created>1490458954293</created>
@@ -861,11 +737,18 @@
       <option name="project" value="LOCAL" />
       <updated>1492170097287</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="refactor a little spider.java">
+      <created>1492171485290</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1492171485290</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39256000" />
+    <option name="totallyTimeSpent" value="44362000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -877,7 +760,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="804" y="24" width="1123" height="1000" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -894,7 +777,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32906976" sideWeight="0.4918864" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22857143" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22851747" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -926,7 +809,8 @@
     <MESSAGE value="add readme.txt" />
     <MESSAGE value="add searchTool.java" />
     <MESSAGE value="add term weight to spider.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="add term weight to spider.java" />
+    <MESSAGE value="refactor a little spider.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor a little spider.java" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1067,7 +951,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1071">
           <caret line="69" column="39" lean-forward="false" selection-start-line="69" selection-start-column="39" selection-end-line="69" selection-end-column="49" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1129,7 +1012,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1071">
           <caret line="69" column="39" lean-forward="false" selection-start-line="69" selection-start-column="39" selection-end-line="69" selection-end-column="49" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1176,7 +1058,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1071">
           <caret line="69" column="39" lean-forward="true" selection-start-line="69" selection-start-column="39" selection-end-line="69" selection-end-column="49" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1298,7 +1179,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/COMP4321 Project/src/Pack/Crawl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1649">
+        <state relative-caret-position="0">
           <caret line="128" column="33" lean-forward="false" selection-start-line="128" selection-start-column="33" selection-end-line="128" selection-end-column="33" />
           <folding />
         </state>
@@ -1322,46 +1203,41 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1088">
           <caret line="70" column="16" lean-forward="false" selection-start-line="70" selection-start-column="16" selection-end-line="70" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/COMP4321 Project/src/Pack/Extract_db.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
+        <state relative-caret-position="0">
           <caret line="30" column="76" lean-forward="false" selection-start-line="30" selection-start-column="59" selection-end-line="30" selection-end-column="76" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/COMP4321 Project/src/Pack/Spider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="114" column="52" lean-forward="false" selection-start-line="114" selection-start-column="52" selection-end-line="114" selection-end-column="52" />
+          <folding>
+            <marker date="1492171461969" expanded="true" signature="9568:9571" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/COMP4321 Project/src/Pack/Webpage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="47" column="14" lean-forward="false" selection-start-line="47" selection-start-column="11" selection-end-line="47" selection-end-column="14" />
+        <state relative-caret-position="257">
+          <caret line="37" column="16" lean-forward="false" selection-start-line="37" selection-start-column="16" selection-end-line="37" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/COMP4321 Project/src/Pack/SearchTool.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1084">
-          <caret line="71" column="24" lean-forward="false" selection-start-line="71" selection-start-column="23" selection-end-line="71" selection-end-column="24" />
+        <state relative-caret-position="696">
+          <caret line="76" column="8" lean-forward="false" selection-start-line="76" selection-start-column="8" selection-end-line="76" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2215#2223#0" expanded="true" />
-            <element signature="e#2611#2626#0" expanded="true" />
-            <element signature="e#2684#2699#0" expanded="true" />
-            <element signature="e#3964#3973#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/COMP4321 Project/src/Pack/Spider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="114" column="52" lean-forward="false" selection-start-line="114" selection-start-column="52" selection-end-line="114" selection-end-column="52" />
-          <folding>
-            <marker date="1492171461969" expanded="true" signature="9568:9571" ph="{...}" />
           </folding>
         </state>
       </provider>

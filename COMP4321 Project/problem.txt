@@ -1,9 +1,14 @@
 problem
 
+
 IndexTool: 
 two hashtable don't know why need two
+
 
 Inverted Index:
 don't know the use of "PostingElement"
 
+
 "PrintAll" num may can be deleted
+
+"searchTool": the redundant getting set may be deleted
