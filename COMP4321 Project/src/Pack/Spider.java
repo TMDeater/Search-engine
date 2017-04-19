@@ -22,9 +22,12 @@ public class Spider {
 	private static Vector<String> DoneList = new Vector<String>();
 	private static IndexTool PageIndexer;
 	private static IndexTool WordIndexer;
+	private static IndexTool FullWordIndexer;
 	private static IndexTool TitleIndexer;
 	private static InvertedIndex wordInverted;
 	private static InvertedIndex wordForward;
+	private static InvertedIndex fullWordInverted;
+	private static InvertedIndex fullWordForward;
 	private static InvertedIndex ChildParent;
 	private static RecordManager recman;
 	private static InvertedIndex ParentChild;
@@ -39,9 +42,12 @@ public class Spider {
 			recman = RecordManagerFactory.createRecordManager("COMP4321 Project/public_html/database");
 			PageIndexer = new IndexTool(recman, "page");
 			WordIndexer = new IndexTool(recman, "word");
+			FullWordIndexer = new IndexTool(recman, "fullWord");
 			TitleIndexer = new IndexTool(recman, "title");
 			wordInverted = new InvertedIndex(recman, "invertedIndex");
 			wordForward = new InvertedIndex(recman, "ForwardIndex");
+			fullWordInverted = new InvertedIndex(recman, "fullInvertedIndex");
+			fullWordForward = new InvertedIndex(recman, "fullForwardIndex");
 			ChildParent = new InvertedIndex(recman, "ParentChild");
 			ParentChild = new InvertedIndex(recman, "PC");
 			PageProperty = new PageInfm(recman, "PPT");
@@ -175,11 +181,13 @@ public class Spider {
 				System.out.println("update information...");
 				//update if last modification date are not same
 				String text = wordForward.getValue(Integer.toString(pgidx));
+				String fulltext = fullWordForward.getValue(Integer.toString(pgidx));
 				String[] temp = text.split(" ");
 				for(int i = 0; i < temp.length; i++){
 					System.out.println(temp[i]);
 				}
 				wordForward.delEntry(Integer.toString(pgidx));
+				fullWordForward.delEntry(Integer.toString(pgidx));
 				PageProperty.delEntry(Integer.toString(pgidx));
 			}
 		}else{
@@ -201,11 +209,29 @@ public class Spider {
 			}
 		}
 
+		//extract all words
+		Vector<String> allWords = crawler.extractWords();
+		Hashtable<Integer, String> allWordMap = new Hashtable<Integer,String>();
+		for (int i=0; i<allWords.size(); i++){
+			int index = FullWordIndexer.addEntry(allWords.get(i), Integer.toString(FullWordIndexer.getLastIdx()));
+			fullAddFreqOrNew(allWordMap, index, i);
+			fullWordForward.addEntry2(pgidx+"", allWords.get(i));
+		}
+
 		//find max freq in a doc
 		Set<Integer> set = map.keySet();
 	    Iterator<Integer> itr = set.iterator();
 		int max = findMaxFreq(pgidx, map, itr);
 	    maxTermFreq.addEntry(Integer.toString(pgidx), Integer.toString(max));
+
+	    //set inverted index for full word
+		Set<Integer> fullWordSet =allWordMap.keySet();
+		Iterator<Integer> fullitr = fullWordSet.iterator();
+		while (fullitr.hasNext()) {
+			int idx = fullitr.next();
+			String position = allWordMap.get(idx);
+			fullWordInverted.fullWordAddEntry(idx+"", pgidx, position);
+		}
 	    
 	    
 		//title
@@ -267,6 +293,14 @@ public class Spider {
         }else{
             map.put(index, 1);
         }
+	}
+
+	public static void fullAddFreqOrNew(Hashtable<Integer, String> map, int index, int position){
+		if(map.containsKey(index)){
+			map.put(index, new String(map.get(index) + " " + Integer.toString(position)));
+		}else{
+			map.put(index, Integer.toString(position));
+		}
 	}
 
 	public static void checkAndAddList(Vector<String> links, int i) {

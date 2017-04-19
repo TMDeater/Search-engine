@@ -74,7 +74,7 @@ public class SearchTool {
         Hashtable<String, Double> map = new Hashtable<String,Double>();
         Hashtable<String, Double> mapForCalSquare = new Hashtable<String,Double>();
         SumOfWeightForEachDoc(keywordValue, map, mapForCalSquare);
-        
+
         Set<String> set = mapForCalSquare.keySet();
         Iterator<String> iterator = set.iterator();
         //calculate the square root of the weight of different doc

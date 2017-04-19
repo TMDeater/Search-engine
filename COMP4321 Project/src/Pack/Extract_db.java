@@ -12,9 +12,12 @@ public class Extract_db {
 	private static StemStop stopStem = new StemStop("COMP4321 Project/src/Pack/stopwords.txt");
 	private static IndexTool PageIndexer;
 	private static IndexTool WordIndexer;
+	private static IndexTool FullWordIndexer;
 	private static IndexTool TitleIndexer;
 	private static InvertedIndex inverted;
 	private static InvertedIndex ForwardIndex;
+	private static InvertedIndex fullWordInverted;
+	private static InvertedIndex fullWordForward;
 	private static InvertedIndex ChildParent;
 	private static Writer write;
 	private static RecordManager recman;
@@ -32,11 +35,14 @@ public class Extract_db {
 		
 		PageIndexer = new IndexTool(recman, "page");
 		WordIndexer = new IndexTool(recman, "word");
+		FullWordIndexer = new IndexTool(recman, "fullWord");
 		TitleIndexer = new IndexTool(recman, "title");
 		
 		//word index
 		inverted = new InvertedIndex(recman, "invertedIndex");
 		ForwardIndex = new InvertedIndex(recman, "ForwardIndex");
+		fullWordInverted = new InvertedIndex(recman, "fullInvertedIndex");
+		fullWordForward = new InvertedIndex(recman, "fullForwardIndex");
 		ChildParent = new InvertedIndex(recman, "ParentChild");
 		ParentChild = new InvertedIndex(recman, "PC");
 		Pageppt  = new PageInfm(recman, "PPT");
