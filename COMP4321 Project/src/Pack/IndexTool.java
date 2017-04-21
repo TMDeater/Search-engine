@@ -120,6 +120,24 @@ public class IndexTool{
 		return hashtable1.keys();
 	}
 
+	public String findTitleWordID(String titleword) throws IOException {
+		printAll();
+    	FastIterator iterator = this.Allkeys();
+		String invertedIndexKey;
+		String result = "";
+		while ((invertedIndexKey = (String) iterator.next()) != null){
+			if (invertedIndexKey.contains(titleword)){
+				String docID = getIdx(invertedIndexKey);
+				if (result.equals("")){
+					result = docID;
+				}else {
+					result = result + " " + docID;
+				}
+			}
+		}
+		return result;
+	}
+
   	public void printAll() throws IOException {
   		// Print all the data in the hashtable
   		// ADD YOUR CODES HERE

@@ -24,10 +24,7 @@ import java.net.*;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.StringTokenizer;
-import java.util.Vector;
+import java.util.*;
 
 public class Crawl{
 
@@ -189,9 +186,14 @@ public class Crawl{
                 String encoding = new String(Base64.encodeBase64(namePD.getBytes()));
                 connect.setRequestProperty( "Authorization","Basic "+encoding);
                 connect.connect();
+//                Scanner reader = new Scanner(System.in);  // Reading from System.in
+//                System.out.println("Enter a username: ");
+//                String username = reader.nextLine();
+//                System.out.println("Enter password: ");
+//                String password = new jline.ConsoleReader().readLine(new Character('*'));
                 Authenticator.setDefault (new Authenticator() {
                     protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication ("wwngaa", "00".toCharArray());
+                        return new PasswordAuthentication ("wwngaa", "gdtgxjh00".toCharArray());
                     }
                 });
             }

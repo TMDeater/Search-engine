@@ -45,6 +45,7 @@ public class SearchTool {
 
         //index for word
         //load from the database
+        titleInverted = new InvertedIndex(recManager, "titleInvertedIndex");
         invertedIdx = new InvertedIndex(recManager, "invertedIndex");
         ForwardIdx = new InvertedIndex(recManager, "ForwardIdx");
         ChildPar = new InvertedIndex(recManager, "ParChild");
@@ -74,6 +75,7 @@ public class SearchTool {
         Hashtable<String, Double> map = new Hashtable<String,Double>();
         Hashtable<String, Double> mapForCalSquare = new Hashtable<String,Double>();
         SumOfWeightForEachDoc(keywordValue, map, mapForCalSquare);
+        FindTitle(keywords, map, mapForCalSquare);
 
         Set<String> set = mapForCalSquare.keySet();
         Iterator<String> iterator = set.iterator();
@@ -106,7 +108,6 @@ public class SearchTool {
 
 
     private void SumOfWeightForEachDoc(Vector<String> keywordValue, Hashtable<String, Double> map, Hashtable<String, Double> mapForCalSquare) throws IOException {
-        //termWeight.printAll();
         for(int i = 0; i< keywordValue.size(); i++){
             String[] docIDAndWeight = termWeight.getValue(keywordValue.elementAt(i)).split(" ");
             for(int j = 0; j < docIDAndWeight.length; j++){
@@ -123,9 +124,31 @@ public class SearchTool {
                 }else{
                     //the word already exist in the map so add the weight to the map's value
                     double weightSquare = mapForCalSquare.get(docIDString) + weightVal * weightVal;
-                    double weight = mapForCalSquare.get(docIDString) + weightVal;
+                    double weight = map.get(docIDString) + weightVal;
                     map.put(docIDString, weight);
                     mapForCalSquare.put(docIDString, weightSquare);
+                }
+            }
+        }
+    }
+    private void FindTitle(Vector<String> keyword, java.util.Hashtable<String, Double> map, java.util.Hashtable<String, Double> mapForCalSquare) throws IOException {
+        for (int i = 0; i< keyword.size(); i++){
+            String titleWordID = TitleIdxr.findTitleWordID(keyword.get(i));
+            String[] docIDString = titleInverted.getDocIDForTitle(titleWordID).split(" ");
+            if (docIDString[0].equals("-1")) {
+                return;
+            }
+            for (int j =0; j<docIDString.length; j++){
+                if(!map.containsKey(docIDString[j])){
+                    double weight=1.0;
+                    map.put (docIDString[j], weight);
+                    mapForCalSquare.put(docIDString[j], weight);
+                }else{
+                    //title word alredy exist in the map
+                    double weight = map.get(docIDString[j]) + 1;
+                    double weightSquare = mapForCalSquare.get(docIDString[j]) + 1;
+                    map.put(docIDString[j], weight);
+                    mapForCalSquare.put(docIDString[j], weightSquare);
                 }
             }
         }

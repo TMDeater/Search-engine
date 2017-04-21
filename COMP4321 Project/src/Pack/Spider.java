@@ -24,6 +24,7 @@ public class Spider {
 	private static IndexTool WordIndexer;
 	private static IndexTool FullWordIndexer;
 	private static IndexTool TitleIndexer;
+	private static InvertedIndex titleInverted;
 	private static InvertedIndex wordInverted;
 	private static InvertedIndex wordForward;
 	private static InvertedIndex fullWordInverted;
@@ -44,6 +45,7 @@ public class Spider {
 			WordIndexer = new IndexTool(recman, "word");
 			FullWordIndexer = new IndexTool(recman, "fullWord");
 			TitleIndexer = new IndexTool(recman, "title");
+			titleInverted = new InvertedIndex(recman, "titleInvertedIndex");
 			wordInverted = new InvertedIndex(recman, "invertedIndex");
 			wordForward = new InvertedIndex(recman, "ForwardIndex");
 			fullWordInverted = new InvertedIndex(recman, "fullInvertedIndex");
@@ -53,6 +55,8 @@ public class Spider {
 			PageProperty = new PageInfm(recman, "PPT");
 			maxTermFreq = new IndexTool(recman, "maxTermFreq");
 			termW = new InvertedIndex(recman, "termW");
+
+            //wordInverted.printAll();
 
 			System.out.println("load in webpage...");
 			fetchPages("https://course.cse.ust.hk/comp4321/labs/TestPages/testpage.htm");
@@ -97,6 +101,7 @@ public class Spider {
 			
 			recman.commit();
 			//PageProperty.printAll();
+
 			recman.close();
 			System.out.println("\nFinished");
 		}
@@ -250,7 +255,7 @@ public class Spider {
 			if (titleWords.firstElement()!=""){
 				for(int i = 0; i < titleWords.size(); i++){
 					title += titleWords.elementAt(i);
-                    stopStemCheckAndPutInTitleIndex(stopStem, titleWords, i);
+                    stopStemCheckAndPutInTitleIndex(stopStem, titleWords, i, pgidx);
                 }
 			}
 		}catch(ParserException ex){
@@ -276,9 +281,13 @@ public class Spider {
         }
     }
 
-    public static void stopStemCheckAndPutInTitleIndex(StemStop stopStem, Vector<String> titleWords, int i) throws IOException {
+    public static void stopStemCheckAndPutInTitleIndex(StemStop stopStem, Vector<String> titleWords, int i, int pgidx) throws IOException {
         if (!stopStem.isStopWord(titleWords.get(i))){
-            TitleIndexer.addEntry(stopStem.stem(titleWords.get(i)), Integer.toString(TitleIndexer.getLastIdx()));
+            int iwordIndex=TitleIndexer.addEntry(stopStem.stem(titleWords.get(i)), Integer.toString(TitleIndexer.getLastIdx()));
+        	String wordIndex = Integer.toString(iwordIndex);
+            titleInverted.addEntry2(wordIndex, Integer.toString(pgidx));
+            //titleInverted.printAll();
+            System.out.println("add "+titleWords.get(i)+" for "+pgidx);
         }
     }
 

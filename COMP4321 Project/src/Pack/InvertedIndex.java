@@ -37,20 +37,6 @@ public class InvertedIndex
         recman.close();
     }
 
-    public void fullWordAddEntry(String word, int docID, String position) throws IOException {
-    	//Add "docX 1 3 6 9" for word into hashtable
-		if (hashtable.get(word)!=null && ((String) hashtable.get(word)).contains( "doc" + docID+ " " + position))
-		{
-			return;
-		}
-		String new_entry = docID +":"+ position +" ";
-		String existed_entry = "";
-		if (hashtable.get(word) != null){
-			existed_entry = (String) hashtable.get(word);
-		}
-		hashtable.put(word, existed_entry + new_entry);
-	}
-
     public void addEntry(String word, int x, int y) throws IOException {
       // Add a "docX Y" entry for the key "word" into hashtable
   		if (hashtable.get(word)!=null && ((String) hashtable.get(word)).contains( "doc" + x+ " " + y))
@@ -83,6 +69,17 @@ public class InvertedIndex
       hashtable.put(word, existed_entry + new_entry);
     }
 
+	public void fullWordAddEntry(String word, int docID, String position) throws IOException {
+		//Add "docX 1 3 6 9" for word into hashtable
+		if (hashtable.get(word)!=null && ((String) hashtable.get(word)).contains( "doc" + docID+ " " + position)) {  return;  }
+		String new_entry = docID +":"+ position +" ";
+		String existed_entry = "";
+		if (hashtable.get(word) != null){
+			existed_entry = (String) hashtable.get(word);
+		}
+		hashtable.put(word, existed_entry + new_entry);
+	}
+
     public void delEntry(String word) throws IOException {
   		// Delete the word and its list from the hashtable
   		// ADD YOUR CODES HERE
@@ -93,6 +90,14 @@ public class InvertedIndex
     
 	public String getValue(String index) throws IOException{
 		if(hashtable.get(index) == null){
+			return "-1";
+		}
+		return String.valueOf(hashtable.get(index));
+	}
+
+	public String getDocIDForTitle(String index) throws IOException {
+		//printAll();
+    	if(hashtable.get(index) == null){
 			return "-1";
 		}
 		return String.valueOf(hashtable.get(index));
