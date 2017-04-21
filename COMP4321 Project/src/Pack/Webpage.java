@@ -19,6 +19,15 @@ public class Webpage implements Comparable<Webpage>{
 		keyword = new Vector<Word>();
 	}
 
+	public void copy(Webpage web){
+		setURL(new String(web.getURL()));
+		setTitle(new String(web.getTitle()));
+		setLastUpdate(new String(web.getLastUpdate()));
+		setPageSize(web.getPageSize());
+		setScore(web.getScore());
+
+	}
+
 	public String getURL(){	return url;}
 	public void setURL(String url){	this.url=url;}
 	public String getTitle(){return title;}
@@ -37,7 +46,7 @@ public class Webpage implements Comparable<Webpage>{
 	public Vector<Word> getKeyword(){	return keyword;}
 	public void sortKeyword(){	Collections.sort(keyword);}
 
-	public int compareWith(Webpage webpage){
+	public int compareTo(Webpage webpage){
 		double difference = this.score - webpage.getScore();
 		if (difference>0.0)	{return -1;}
 		if (difference<0.0)	{return 1;}
@@ -66,9 +75,10 @@ public class Webpage implements Comparable<Webpage>{
 //		return infm+"\n";
 //	}
 
-	@Override
-	public int compareTo(Webpage arg0) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+//	@Override
+//	public int compareTo(Webpage o) {
+//		// TODO Auto-generated method stub
+//		return new Double(score).compareTo( o.score);
+//
+//	}
 }

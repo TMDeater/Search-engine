@@ -1,21 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="58ec65ce-19c9-4657-b0f5-ece01fa20ea3" name="Default" comment="add extract full text features">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/COMP4321 Project/public_html/database.db" afterPath="$PROJECT_DIR$/COMP4321 Project/public_html/database.db" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/Pack/Crawl.class" afterPath="$PROJECT_DIR$/bin/Pack/Crawl.class" />
+    <list default="true" id="58ec65ce-19c9-4657-b0f5-ece01fa20ea3" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/Pack/Extract_db.class" afterPath="$PROJECT_DIR$/bin/Pack/Extract_db.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/Pack/IndexTool.class" afterPath="$PROJECT_DIR$/bin/Pack/IndexTool.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/Pack/InvertedIndex.class" afterPath="$PROJECT_DIR$/bin/Pack/InvertedIndex.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/Pack/PageInfm.class" afterPath="$PROJECT_DIR$/bin/Pack/PageInfm.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/Pack/PostingElement.class" afterPath="$PROJECT_DIR$/bin/Pack/PostingElement.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/Pack/Spider.class" afterPath="$PROJECT_DIR$/bin/Pack/Spider.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/Pack/Webpage.class" afterPath="$PROJECT_DIR$/bin/Pack/Webpage.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/COMP4321 Project/src/Pack/Crawl.java" afterPath="$PROJECT_DIR$/COMP4321 Project/src/Pack/Crawl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/COMP4321 Project/src/Pack/Extract_db.java" afterPath="$PROJECT_DIR$/COMP4321 Project/src/Pack/Extract_db.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/COMP4321 Project/src/Pack/SearchTool.java" afterPath="$PROJECT_DIR$/COMP4321 Project/src/Pack/SearchTool.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/COMP4321 Project/src/Pack/Spider.java" afterPath="$PROJECT_DIR$/COMP4321 Project/src/Pack/Spider.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/COMP4321 Project/src/Pack/Webpage.java" afterPath="$PROJECT_DIR$/COMP4321 Project/src/Pack/Webpage.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spider_result.txt" afterPath="$PROJECT_DIR$/spider_result.txt" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
@@ -44,8 +37,8 @@
       <file leaf-file-name="Spider.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/COMP4321 Project/src/Pack/Spider.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="43" column="23" lean-forward="false" selection-start-line="43" selection-start-column="12" selection-end-line="43" selection-end-column="23" />
+            <state relative-caret-position="173">
+              <caret line="224" column="12" lean-forward="false" selection-start-line="224" selection-start-column="12" selection-end-line="224" selection-end-column="12" />
               <folding>
                 <marker date="1492761566775" expanded="true" signature="11248:11251" ph="{...}" />
               </folding>
@@ -63,11 +56,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Extract_db.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Extract_db.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/COMP4321 Project/src/Pack/Extract_db.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="62" column="10" lean-forward="false" selection-start-line="62" selection-start-column="10" selection-end-line="62" selection-end-column="10" />
+            <state relative-caret-position="-1285">
+              <caret line="66" column="0" lean-forward="false" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
               <folding>
                 <element signature="e#2422#2430#0" expanded="true" />
               </folding>
@@ -75,25 +68,37 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SearchTool.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/COMP4321 Project/src/Pack/SearchTool.java">
+      <file leaf-file-name="Webpage.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/COMP4321 Project/src/Pack/Webpage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="659">
-              <caret line="103" column="10" lean-forward="false" selection-start-line="103" selection-start-column="10" selection-end-line="103" selection-end-column="10" />
+            <state relative-caret-position="1025">
+              <caret line="48" column="24" lean-forward="false" selection-start-line="48" selection-start-column="24" selection-end-line="48" selection-end-column="24" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Crawl.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SearchTool.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/COMP4321 Project/src/Pack/SearchTool.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="38">
+              <caret line="54" column="5" lean-forward="true" selection-start-line="54" selection-start-column="5" selection-end-line="54" selection-end-column="5" />
+              <folding>
+                <element signature="e#3517#3526#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Crawl.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/COMP4321 Project/src/Pack/Crawl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="184" column="51" lean-forward="false" selection-start-line="184" selection-start-column="51" selection-end-line="184" selection-end-column="51" />
+            <state relative-caret-position="414">
+              <caret line="193" column="70" lean-forward="false" selection-start-line="193" selection-start-column="70" selection-end-line="193" selection-end-column="70" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#6853#7094#0" expanded="true" />
-                <element signature="e#7093#7094#0" expanded="true" />
+                <element signature="e#6853#7087#0" expanded="true" />
+                <element signature="e#7086#7087#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -156,10 +161,11 @@
         <option value="$PROJECT_DIR$/COMP4321 Project/lib/htmlparser1_6/lib/htmlparser.jar!/org/htmlparser/Parser.class" />
         <option value="$PROJECT_DIR$/COMP4321 Project/src/Pack/StemStop.java" />
         <option value="$PROJECT_DIR$/COMP4321 Project/src/Pack/InvertedIndex.java" />
-        <option value="$PROJECT_DIR$/COMP4321 Project/src/Pack/Crawl.java" />
         <option value="$PROJECT_DIR$/COMP4321 Project/src/Pack/Spider.java" />
-        <option value="$PROJECT_DIR$/COMP4321 Project/src/Pack/SearchTool.java" />
         <option value="$PROJECT_DIR$/COMP4321 Project/src/Pack/Extract_db.java" />
+        <option value="$PROJECT_DIR$/COMP4321 Project/src/Pack/Webpage.java" />
+        <option value="$PROJECT_DIR$/COMP4321 Project/src/Pack/SearchTool.java" />
+        <option value="$PROJECT_DIR$/COMP4321 Project/src/Pack/Crawl.java" />
       </list>
     </option>
   </component>
@@ -171,12 +177,11 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
+    <option name="width" value="1081" />
     <option name="height" value="1056" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
+    <navigator currentView="Scope" currentSubView="Project Files" proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -191,9 +196,71 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
-      <pane id="PackagesPane" />
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Search-engine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Search-engine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane" />
-      <pane id="Scope" />
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Search-engine">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Search-engine">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="COMP4321 Project">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Search-engine">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="COMP4321 Project">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Pack">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -703,7 +770,7 @@
       <workItem from="1492253209225" duration="5285000" />
       <workItem from="1492319916145" duration="874000" />
       <workItem from="1492585648400" duration="11184000" />
-      <workItem from="1492753424355" duration="9954000" />
+      <workItem from="1492753424355" duration="19141000" />
     </task>
     <task id="LOCAL-00001" summary="solve some bugs like null title">
       <created>1490458954293</created>
@@ -796,11 +863,18 @@
       <option name="project" value="LOCAL" />
       <updated>1492603820395</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="debug and crawl new pages">
+      <created>1492763555258</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1492763555258</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67005000" />
+    <option name="totallyTimeSpent" value="76192000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -812,7 +886,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="0" width="1081" height="1056" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -864,7 +938,8 @@
     <MESSAGE value="refactor a little spider.java" />
     <MESSAGE value="refactor SearchTool.java" />
     <MESSAGE value="add extract full text features" />
-    <option name="LAST_COMMIT_MESSAGE" value="add extract full text features" />
+    <MESSAGE value="debug and crawl new pages" />
+    <option name="LAST_COMMIT_MESSAGE" value="debug and crawl new pages" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -888,49 +963,13 @@
           <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/COMP4321 Project/src/Pack/Extract_db.java</url>
-          <line>64</line>
-          <properties />
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/COMP4321 Project/src/Pack/SearchTool.java</url>
-          <line>110</line>
+          <line>125</line>
           <properties />
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/COMP4321 Project/src/Pack/SearchTool.java</url>
-          <line>75</line>
-          <properties />
-          <option name="timeStamp" value="23" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/COMP4321 Project/src/Pack/SearchTool.java</url>
-          <line>63</line>
-          <properties />
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/COMP4321 Project/src/Pack/SearchTool.java</url>
-          <line>77</line>
-          <properties />
-          <option name="timeStamp" value="25" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/COMP4321 Project/src/Pack/SearchTool.java</url>
-          <line>78</line>
-          <properties />
-          <option name="timeStamp" value="26" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/COMP4321 Project/src/Pack/SearchTool.java</url>
-          <line>105</line>
-          <properties />
-          <option name="timeStamp" value="27" />
+          <option name="timeStamp" value="37" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="28" />
+      <option name="time" value="39" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -939,18 +978,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/COMP4321 Project/src/Pack/Crawl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2125">
-          <caret line="125" column="0" lean-forward="false" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#6853#7094#0" expanded="true" />
-            <element signature="e#7093#7094#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/COMP4321 Project/src/Pack/Porter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
@@ -984,8 +1011,8 @@
           <caret line="41" column="5" lean-forward="false" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6853#7094#0" expanded="true" />
-            <element signature="e#7093#7094#0" expanded="true" />
+            <element signature="e#6853#7087#0" expanded="true" />
+            <element signature="e#7086#7087#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1051,8 +1078,8 @@
           <caret line="41" column="5" lean-forward="false" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6853#7094#0" expanded="true" />
-            <element signature="e#7093#7094#0" expanded="true" />
+            <element signature="e#6853#7087#0" expanded="true" />
+            <element signature="e#7086#7087#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1207,13 +1234,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/COMP4321 Project/src/Pack/PageInfm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="482">
-          <caret line="61" column="34" lean-forward="false" selection-start-line="61" selection-start-column="34" selection-end-line="61" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/COMP4321 Project/src/Pack/Porter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="257">
@@ -1280,13 +1300,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/COMP4321 Project/src/Pack/Webpage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="37" column="16" lean-forward="false" selection-start-line="37" selection-start-column="16" selection-end-line="37" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/COMP4321 Project/lib/jdbm-1.0/lib/jdbm-1.0.jar!/jdbm/htree/HashDirectory.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="296">
@@ -1311,18 +1324,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/COMP4321 Project/src/Pack/Crawl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="184" column="51" lean-forward="false" selection-start-line="184" selection-start-column="51" selection-end-line="184" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#6853#7094#0" expanded="true" />
-            <element signature="e#7093#7094#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/COMP4321 Project/lib/jdbm-1.0/lib/jdbm-1.0.jar!/jdbm/RecordManagerFactory.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="348">
@@ -1339,30 +1340,71 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/COMP4321 Project/src/Pack/PageInfm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="25" column="13" lean-forward="false" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/src.zip!/java/util/Collections.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-576">
+          <caret line="139" column="57" lean-forward="false" selection-start-line="139" selection-start-column="57" selection-end-line="139" selection-end-column="57" />
+          <folding>
+            <element signature="e#5644#5645#0" expanded="false" />
+            <element signature="e#5675#5676#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/COMP4321 Project/src/Pack/Webpage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1025">
+          <caret line="48" column="24" lean-forward="false" selection-start-line="48" selection-start-column="24" selection-end-line="48" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/COMP4321 Project/src/Pack/SearchTool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="54" column="5" lean-forward="true" selection-start-line="54" selection-start-column="5" selection-end-line="54" selection-end-column="5" />
+          <folding>
+            <element signature="e#3517#3526#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/COMP4321 Project/src/Pack/Extract_db.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1285">
+          <caret line="66" column="0" lean-forward="false" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
+          <folding>
+            <element signature="e#2422#2430#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/COMP4321 Project/src/Pack/Spider.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="43" column="23" lean-forward="false" selection-start-line="43" selection-start-column="12" selection-end-line="43" selection-end-column="23" />
+        <state relative-caret-position="173">
+          <caret line="224" column="12" lean-forward="false" selection-start-line="224" selection-start-column="12" selection-end-line="224" selection-end-column="12" />
           <folding>
             <marker date="1492761566775" expanded="true" signature="11248:11251" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/COMP4321 Project/src/Pack/SearchTool.java">
+    <entry file="file://$PROJECT_DIR$/COMP4321 Project/src/Pack/Crawl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="659">
-          <caret line="103" column="10" lean-forward="false" selection-start-line="103" selection-start-column="10" selection-end-line="103" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/COMP4321 Project/src/Pack/Extract_db.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="62" column="10" lean-forward="false" selection-start-line="62" selection-start-column="10" selection-end-line="62" selection-end-column="10" />
+        <state relative-caret-position="414">
+          <caret line="193" column="70" lean-forward="false" selection-start-line="193" selection-start-column="70" selection-end-line="193" selection-end-column="70" />
           <folding>
-            <element signature="e#2422#2430#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#6853#7087#0" expanded="true" />
+            <element signature="e#7086#7087#0" expanded="true" />
           </folding>
         </state>
       </provider>

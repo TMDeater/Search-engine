@@ -191,7 +191,7 @@ public class Crawl{
                 connect.connect();
                 Authenticator.setDefault (new Authenticator() {
                     protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication ("wwngaa", "gdtgxjh00".toCharArray());
+                        return new PasswordAuthentication ("wwngaa", "00".toCharArray());
                     }
                 });
             }

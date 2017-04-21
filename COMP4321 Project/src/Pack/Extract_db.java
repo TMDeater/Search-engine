@@ -64,7 +64,7 @@ public class Extract_db {
 		SearchTool se = new SearchTool();
 		Vector<Webpage> result = se.search(keywords);
 		for(int i = 0; i < result.size(); i++){
-			System.out.println(result.elementAt(i));
+			generatePageInfm(result.elementAt(i).getURL());
 		}
 		
 //		int printedpage=0;

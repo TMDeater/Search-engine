@@ -89,6 +89,9 @@ public class SearchTool {
         Vector<Webpage> result = new Vector<Webpage>();
         while (iterator.hasNext()) {
             String index = iterator.next();
+            double sum_d = map.get(index);
+            double sumsq_d = mapForCalSquare.get(index);
+            double sqrt_q = Math.sqrt(keywordValue.size());
             double totalScore = map.get(index)/(mapForCalSquare.get(index) * Math.sqrt(keywordValue.size()));
             result.add(toWebpage(index,totalScore));
         }
@@ -96,9 +99,11 @@ public class SearchTool {
         //score = sum(weight) / ( sqrt(sum(weight^2)) * sqrt(queryLength^2) )
         //                                                 ^note that the query weight is set to be 1 so no need to calculate the square
         //sortting the result in decending order so it can be view and get the best page
+
         Collections.sort(result);
         return result;
     }
+
 
     private void SumOfWeightForEachDoc(Vector<String> keywordValue, Hashtable<String, Double> map, Hashtable<String, Double> mapForCalSquare) throws IOException {
         //termWeight.printAll();
