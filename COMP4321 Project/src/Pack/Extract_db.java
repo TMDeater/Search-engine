@@ -2,6 +2,7 @@ package Pack;
 import org.htmlparser.util.ParserException;
 
 import java.io.*;
+import java.util.Vector;
 
 import jdbm.RecordManager;
 import jdbm.RecordManagerFactory;
@@ -28,6 +29,7 @@ public class Extract_db {
 	private static InvertedIndex titleForwardIndex;
 	private static InvertedIndex titleInverted;
 	private static IndexTool titleMaxTermFreq;
+	private static InvertedIndex termWeight;
 	
 	
 	public static void main(String[] args) throws IOException, ParserException {
@@ -53,24 +55,34 @@ public class Extract_db {
 		titleForwardIndex = new InvertedIndex(recman, "titleFI");
 		titleInverted = new InvertedIndex(recman, "titleI");
 		titleMaxTermFreq = new IndexTool(recman, "titleMaxTermFreq");
-		
-		
-		int printedpage=0;
-		int i=0;
-		while( printedpage < 30){		
-			String iString = String.valueOf(i);
-			String pageidxval=PageIndexer.getValue(iString);
-			int idx = PageIndexer.getIdxNumber(pageidxval);
-			if (Pageppt.getTitle(Integer.toString(idx)).equals("null")){
-				i++;
-				continue;
-			}
-			else{
-				generatePageInfm(pageidxval);
-				printedpage++;
-				i++;
-			}
+
+		termWeight = new InvertedIndex(recman, "termW");
+
+		Vector<String> keywords = new Vector<String>();
+		keywords.add("aveng");
+		//keywords.add("news");
+		SearchTool se = new SearchTool();
+		Vector<Webpage> result = se.search(keywords);
+		for(int i = 0; i < result.size(); i++){
+			System.out.println(result.elementAt(i));
 		}
+		
+//		int printedpage=0;
+//		int i=0;
+//		while( printedpage < 30){
+//			String iString = String.valueOf(i);
+//			String pageidxval=PageIndexer.getValue(iString);
+//			int idx = PageIndexer.getIdxNumber(pageidxval);
+//			if (Pageppt.getTitle(Integer.toString(idx)).equals("null")){
+//				i++;
+//				continue;
+//			}
+//			else{
+//				generatePageInfm(pageidxval);
+//				printedpage++;
+//				i++;
+//			}
+//		}
 
 			
 		

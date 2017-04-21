@@ -15,7 +15,7 @@ import java.util.Set;
 import java.util.Vector;
 
 public class Spider {
-	private static final int MAX = 30;
+	private static final int MAX = 300;
 	private static int numOfPage = 0;
 	private static StemStop stopStem = new StemStop("COMP4321 Project/src/Pack/stopwords.txt");
 	private static Vector<String> TodoList = new Vector<String>();
@@ -52,9 +52,10 @@ public class Spider {
 			ParentChild = new InvertedIndex(recman, "PC");
 			PageProperty = new PageInfm(recman, "PPT");
 			maxTermFreq = new IndexTool(recman, "maxTermFreq");
+			termW = new InvertedIndex(recman, "termW");
 
 			System.out.println("load in webpage...");
-			fetchPages("http://www.cse.ust.hk");
+			fetchPages("https://course.cse.ust.hk/comp4321/labs/TestPages/testpage.htm");
 			while(!TodoList.isEmpty() && numOfPage < MAX){
 				if(DoneList.contains(TodoList.firstElement())){
 					TodoList.removeElementAt(0);
@@ -161,7 +162,13 @@ public class Spider {
 		if (!links.isEmpty()){
             int j=0;
             do{
-                checkAndAddList(links, j);
+                //checkAndAddList(links, j);
+				if(!DoneList.contains(links.elementAt(j))){
+					TodoList.add(links.elementAt(j));
+				}else{
+					links.removeElementAt(j);
+					j--;
+				}
                 j++;
             }while(j<links.size());
         }

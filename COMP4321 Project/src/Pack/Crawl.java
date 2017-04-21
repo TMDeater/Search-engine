@@ -1,5 +1,6 @@
 package Pack;
 
+import org.apache.commons.codec.binary.Base64;
 import org.htmlparser.Node;
 import org.htmlparser.NodeFilter;
 import org.htmlparser.Parser;
@@ -19,12 +20,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLConnection;
+import java.net.*;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.StringTokenizer;
 import java.util.Vector;
@@ -32,8 +32,13 @@ import java.util.Vector;
 public class Crawl{
 
     private String url;
+    private String username;
+    private String password;
+
   public Crawl(String url){
     this.url = url;
+    username = new String("wwngaa");
+    password = new String("gdtgxjh00");
   }
 
     public String getUrl() {
@@ -42,7 +47,8 @@ public class Crawl{
 
   public int pageSize() throws IOException{
     URL website = new URL(url);
-    URLConnection webconnect = website.openConnection();
+    HttpURLConnection webconnect = (HttpURLConnection) website.openConnection();
+    handleUSTLogin(webconnect);
     Reader reader=new InputStreamReader(webconnect.getInputStream(), "utf-8");
     BufferedReader buffer = new BufferedReader(reader);
     String readLine;
@@ -59,29 +65,40 @@ public class Crawl{
 //    String[] now = url.split ("://");
 //    //get the connection to url
 //    URL u = new URL("http", now[1], 80 , "/");
-	URL urlTypeUrl = new URL(url);
-    HttpURLConnection urlConnect = (HttpURLConnection) urlTypeUrl.openConnection();
-    DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-    java.util.Date lastdate = new java.util.Date(urlConnect.getLastModified());
-    if (urlConnect.getLastModified()==0){
+      try {
+          URL urlTypeUrl = new URL(url);
+          HttpURLConnection urlConnect = (HttpURLConnection) urlTypeUrl.openConnection();
+          handleUSTLogin(urlConnect);
+          DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+          java.util.Date lastdate = new java.util.Date(urlConnect.getLastModified());
+          if (urlConnect.getLastModified() == 0) {
 
-        Reader reader=new InputStreamReader(urlConnect.getInputStream(), "utf-8");
-        BufferedReader buffer = new BufferedReader(reader);
-    	String inLine;
-    	String now = "";
-    	while ((inLine = buffer.readLine())!=null){
-    		if (inLine.contains("Last updated on")){
-    			String[] parts=inLine.split(" ");
-    			String date=parts[3];
-    			SimpleDateFormat fromUser = new SimpleDateFormat("yyyy-MM-dd");
-    			SimpleDateFormat myFormat = new SimpleDateFormat("dd-MM-yyyy");
-    			String reformatStr = myFormat.format(fromUser.parse(date));
-    			return reformatStr;
-    		}
-    	}
-    	lastdate=new Date(System.currentTimeMillis());
-    }
-    return dateFormat.format(lastdate);
+              Reader reader = new InputStreamReader(urlConnect.getInputStream(), "utf-8");
+              BufferedReader buffer = new BufferedReader(reader);
+              String inLine;
+              String now = "";
+              while ((inLine = buffer.readLine()) != null) {
+                  if (inLine.contains("Last updated on")) {
+                      String[] parts = inLine.split(" ");
+                      String date = parts[3];
+                      SimpleDateFormat fromUser = new SimpleDateFormat("yyyy-MM-dd");
+                      SimpleDateFormat myFormat = new SimpleDateFormat("dd-MM-yyyy");
+                      String reformatStr = myFormat.format(fromUser.parse(date));
+                      return reformatStr;
+                  } else {
+                      //String slastdate = new String("21-04-2017");
+                      String timeStamp = new SimpleDateFormat("dd-MM-yyyy").format(Calendar.getInstance().getTime());
+                      return timeStamp;
+                  }
+              }
+              lastdate = new Date(System.currentTimeMillis());
+          }
+          return dateFormat.format(lastdate);
+      } catch (Exception e) {
+          //String slastdate = new String("21-04-2017");
+          String timeStamp = new SimpleDateFormat("dd-MM-yyyy").format(Calendar.getInstance().getTime());
+          return timeStamp;
+      }
   }
 
   public Vector<String> extractWords() throws ParserException, IOException
@@ -156,6 +173,31 @@ public class Crawl{
           vector.add(string[k]);
         }
         return vector;
+    }
+
+    public void handleUSTLogin(HttpURLConnection connect) throws MalformedURLException {
+        URL url = new URL(this.url);
+        try{
+            connect = (HttpURLConnection)url.openConnection();
+            connect.setRequestMethod("GET");
+            connect.connect();
+            int code = connect.getResponseCode();
+            if (code==401 && this.url.contains("ust")) {
+                System.out.println("401/n");
+                connect = (HttpURLConnection) url.openConnection();
+                String namePD = new String(username+":"+password);
+                String encoding = new String(Base64.encodeBase64(namePD.getBytes()));
+                connect.setRequestProperty( "Authorization","Basic "+encoding);
+                connect.connect();
+                Authenticator.setDefault (new Authenticator() {
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication ("wwngaa", "gdtgxjh00".toCharArray());
+                    }
+                });
+            }
+        }catch(Exception ex){
+            System.out.println("UnknownHostException encountered.");
+        }
     }
 
     public static void main (String[] args)

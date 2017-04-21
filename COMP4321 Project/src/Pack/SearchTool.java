@@ -30,10 +30,10 @@ public class SearchTool {
     private static IndexTool titleMaxTermFreq;
 
     public SearchTool() throws IOException {
-        stopStem = new StemStop("/COMP4321 Project/src/stopwords.txt");
+        stopStem = new StemStop("COMP4321 Project/src/Pack/stopwords.txt");
         TaskList = new Vector<String>();
         DoneList = new Vector<String>();
-        recManager = RecordManagerFactory.createRecordManager("/COMP4321 Project/public_html/database");
+        recManager = RecordManagerFactory.createRecordManager("COMP4321 Project/public_html/database");
 
         loadFromDatabase();
     }
@@ -51,7 +51,7 @@ public class SearchTool {
         ParChild = new InvertedIndex(recManager, "PC");
         Pageinfm = new PageInfm(recManager, "PPT");
         maxTermFreq = new IndexTool(recManager, "maxTermFreq");
-        termWeight = new InvertedIndex(recManager, "termWth");
+        termWeight = new InvertedIndex(recManager, "termW");
     }
 
     public Vector<Webpage> search(Vector<String> keywords) throws IOException{
@@ -101,6 +101,7 @@ public class SearchTool {
     }
 
     private void SumOfWeightForEachDoc(Vector<String> keywordValue, Hashtable<String, Double> map, Hashtable<String, Double> mapForCalSquare) throws IOException {
+        //termWeight.printAll();
         for(int i = 0; i< keywordValue.size(); i++){
             String[] docIDAndWeight = termWeight.getValue(keywordValue.elementAt(i)).split(" ");
             for(int j = 0; j < docIDAndWeight.length; j++){
