@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58ec65ce-19c9-4657-b0f5-ece01fa20ea3" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/Pack/Extract_db.class" afterPath="$PROJECT_DIR$/bin/Pack/Extract_db.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/Pack/Webpage.class" afterPath="$PROJECT_DIR$/bin/Pack/Webpage.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/COMP4321 Project/Phase 1 Project Description.docx" afterPath="$PROJECT_DIR$/COMP4321 Project/Phase 1 Project Description.docx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/COMP4321 Project/src/Pack/Crawl.java" afterPath="$PROJECT_DIR$/COMP4321 Project/src/Pack/Crawl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/COMP4321 Project/src/Pack/Extract_db.java" afterPath="$PROJECT_DIR$/COMP4321 Project/src/Pack/Extract_db.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/COMP4321 Project/src/Pack/SearchTool.java" afterPath="$PROJECT_DIR$/COMP4321 Project/src/Pack/SearchTool.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/COMP4321 Project/src/Pack/Webpage.java" afterPath="$PROJECT_DIR$/COMP4321 Project/src/Pack/Webpage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spider_result.txt" afterPath="$PROJECT_DIR$/spider_result.txt" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -94,7 +88,7 @@
         <entry file="file://$PROJECT_DIR$/COMP4321 Project/src/Pack/Crawl.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="414">
-              <caret line="193" column="70" lean-forward="false" selection-start-line="193" selection-start-column="70" selection-end-line="193" selection-end-column="70" />
+              <caret line="193" column="64" lean-forward="true" selection-start-line="193" selection-start-column="64" selection-end-line="193" selection-end-column="64" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#6853#7087#0" expanded="true" />
@@ -770,7 +764,7 @@
       <workItem from="1492253209225" duration="5285000" />
       <workItem from="1492319916145" duration="874000" />
       <workItem from="1492585648400" duration="11184000" />
-      <workItem from="1492753424355" duration="19141000" />
+      <workItem from="1492753424355" duration="19836000" />
     </task>
     <task id="LOCAL-00001" summary="solve some bugs like null title">
       <created>1490458954293</created>
@@ -870,11 +864,18 @@
       <option name="project" value="LOCAL" />
       <updated>1492763555258</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="enable the sorting">
+      <created>1492773254138</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1492773254138</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76192000" />
+    <option name="totallyTimeSpent" value="76887000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -939,7 +940,8 @@
     <MESSAGE value="refactor SearchTool.java" />
     <MESSAGE value="add extract full text features" />
     <MESSAGE value="debug and crawl new pages" />
-    <option name="LAST_COMMIT_MESSAGE" value="debug and crawl new pages" />
+    <MESSAGE value="enable the sorting" />
+    <option name="LAST_COMMIT_MESSAGE" value="enable the sorting" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1400,7 +1402,7 @@
     <entry file="file://$PROJECT_DIR$/COMP4321 Project/src/Pack/Crawl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="414">
-          <caret line="193" column="70" lean-forward="false" selection-start-line="193" selection-start-column="70" selection-end-line="193" selection-end-column="70" />
+          <caret line="193" column="64" lean-forward="true" selection-start-line="193" selection-start-column="64" selection-end-line="193" selection-end-column="64" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#6853#7087#0" expanded="true" />
