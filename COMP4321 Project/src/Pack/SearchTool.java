@@ -2,6 +2,7 @@ package Pack;
 
 import jdbm.RecordManager;
 import jdbm.RecordManagerFactory;
+import org.apache.commons.lang.StringUtils;
 
 import java.io.IOException;
 import java.util.*;
@@ -14,10 +15,13 @@ public class SearchTool {
     private Vector<String> TaskList;
     private  Vector<String> DoneList;
     private static IndexTool PageIdxr;
-    private static  IndexTool WordIdxr;
+    private static IndexTool WordIdxr;
+    private static IndexTool FullWordIdxr;
     private static IndexTool TitleIdxr;
-    private static  InvertedIndex invertedIdx;
-    private static  InvertedIndex ForwardIdx;
+    private static InvertedIndex invertedIdx;
+    private static InvertedIndex ForwardIdx;
+    private static InvertedIndex fullWordInverted;
+    private static InvertedIndex fullWordForward;
     private static InvertedIndex pagePro;
     private static InvertedIndex ChildPar;
     private static RecordManager recManager;
@@ -41,6 +45,7 @@ public class SearchTool {
     private void loadFromDatabase() throws IOException {
         PageIdxr = new IndexTool(recManager, "page");
         WordIdxr = new IndexTool(recManager, "word");
+        FullWordIdxr = new IndexTool(recManager, "fullWord");
         TitleIdxr = new IndexTool(recManager, "title");
 
         //index for word
@@ -48,6 +53,8 @@ public class SearchTool {
         titleInverted = new InvertedIndex(recManager, "titleInvertedIndex");
         invertedIdx = new InvertedIndex(recManager, "invertedIndex");
         ForwardIdx = new InvertedIndex(recManager, "ForwardIdx");
+        fullWordInverted = new InvertedIndex(recManager, "fullInvertedIndex");
+        fullWordForward = new InvertedIndex(recManager, "fullForwardIndex");
         ChildPar = new InvertedIndex(recManager, "ParChild");
         ParChild = new InvertedIndex(recManager, "PC");
         Pageinfm = new PageInfm(recManager, "PPT");
@@ -58,11 +65,49 @@ public class SearchTool {
     public Vector<Webpage> search(Vector<String> keywords) throws IOException{
         //check if the keyword is stopword and add into keyword value
         Vector<String> keywordValue = new Vector<String>();
+        Vector<String> quoteKeywordValue = new Vector<String>();
+
+        //pharse search
+        String initialString = "";
+        //group up the query to be : abc "ahg" ddfh
+        //one space is at the beginning
+        for (String keyword: keywords){
+            initialString=initialString+" "+keyword;
+        }
+        //check contain two "
+        int count = StringUtils.countMatches(initialString,"\"");
+        if ((count%2)==0){
+            //handle have quote text
+            String[] stringSplitByQuote = initialString.split("\"");
+            Vector<String> quotedString = new Vector<String>();
+            Vector<String> nonQuotedString = new Vector<String>();
+            for (int i=0;i<stringSplitByQuote.length;i++){
+                if ((i%2)==1) {
+                    quotedString.add(stringSplitByQuote[i]);
+                } else {
+                    nonQuotedString.add(stringSplitByQuote[i]);
+                }
+            }
+            for (int i = 0; i<quotedString.size();i++) {
+                String[] splitQuoteString = quotedString.get(i).split(" ");
+                for (int j =0;j<splitQuoteString.length;j++) {
+                    String wordInQuotedString = new String (splitQuoteString[j]);
+                    if (!(FullWordIdxr.getIdx(wordInQuotedString).equals("-1"))) {
+                        quoteKeywordValue.add(FullWordIdxr.getIdx(wordInQuotedString));
+                    }
+                }
+
+            }
+        }
+
+
         int keywordNumber=0;
         while (keywordNumber< keywords.size()){
             String word = keywords.elementAt(keywordNumber);
             if (!stopStem.isStopWord(word)){
-                keywordValue.add(WordIdxr.getIdx(stopStem.stem(word)));
+                if (!(WordIdxr.getIdx(stopStem.stem(word)).equals("-1"))){
+                    keywordValue.add(WordIdxr.getIdx(stopStem.stem(word)));
+                }
             }
             keywordNumber++;
         }
@@ -133,7 +178,8 @@ public class SearchTool {
     }
     private void FindTitle(Vector<String> keyword, java.util.Hashtable<String, Double> map, java.util.Hashtable<String, Double> mapForCalSquare) throws IOException {
         for (int i = 0; i< keyword.size(); i++){
-            String titleWordID = TitleIdxr.findTitleWordID(keyword.get(i));
+            System.out.println(stopStem.stem(keyword.get(i)));
+            String titleWordID = TitleIdxr.findTitleWordID(stopStem.stem(keyword.get(i)));
             String[] docIDString = titleInverted.getDocIDForTitle(titleWordID).split(" ");
             if (docIDString[0].equals("-1")) {
                 return;
