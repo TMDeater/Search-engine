@@ -103,6 +103,13 @@ public class InvertedIndex
 		return String.valueOf(hashtable.get(index));
 	}
 
+	public String getFullWordDocIDandPosition(String index) throws IOException {
+    	if(hashtable.get(index)==null){
+    		return "-1";
+		}
+		return String.valueOf(hashtable.get(index));
+	}
+
     public int numOfElement(String word) throws IOException{
   		if (hashtable.get(word) != null) {
   			String wordEntry = (String) hashtable.get(word);

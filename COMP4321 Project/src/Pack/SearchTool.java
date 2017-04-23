@@ -95,6 +95,22 @@ public class SearchTool {
                     if (!(FullWordIdxr.getIdx(wordInQuotedString).equals("-1"))) {
                         quoteKeywordValue.add(FullWordIdxr.getIdx(wordInQuotedString));
                     }
+                    else {
+                        //no required keyword found so return
+                        Vector<Webpage> result = new Vector<Webpage>();
+                        return result;
+                    }
+                    for (String quoteWordIndex:quoteKeywordValue) {
+                        String docIDandPositionCombine = fullWordInverted.getFullWordDocIDandPosition(quoteWordIndex);
+                        String[] singleDocIDandPosition = docIDandPositionCombine.split("-");
+                        //for each document
+                        for (int k=0;k<singleDocIDandPosition.length;k++){
+                            String[] splitDocIDandPosition = singleDocIDandPosition[k].split(":");
+                            String DocID = splitDocIDandPosition[0];
+                            String[] position = splitDocIDandPosition[1].split(" ");
+
+                        }
+                    }
                 }
 
             }
