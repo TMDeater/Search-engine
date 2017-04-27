@@ -69,10 +69,10 @@ public class InvertedIndex
       hashtable.put(word, existed_entry + new_entry);
     }
 
-	public void fullWordAddEntry(String word, int docID, String position) throws IOException {
+	public void fullWordAddEntry(String word, int wordID, String position) throws IOException {
 		//Add "-docX 1 3 6 9" for word into hashtable
-		if (hashtable.get(word)!=null && ((String) hashtable.get(word)).contains( "doc" + docID+ ":" + position)) {  return;  }
-		String new_entry = "-" +docID +":"+ position +" ";
+		if (hashtable.get(word)!=null && ((String) hashtable.get(word)).contains( "-" + wordID+ ":" + position)) {  return;  }
+		String new_entry = "-" +wordID +":"+ position;
 		String existed_entry = "";
 		if (hashtable.get(word) != null){
 			existed_entry = (String) hashtable.get(word);
