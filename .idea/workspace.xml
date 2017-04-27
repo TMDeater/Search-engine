@@ -4,7 +4,6 @@
     <list default="true" id="58ec65ce-19c9-4657-b0f5-ece01fa20ea3" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/COMP4321 Project/src/Pack/InvertedIndex.java" afterPath="$PROJECT_DIR$/COMP4321 Project/src/Pack/InvertedIndex.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/COMP4321 Project/src/Pack/SearchTool.java" afterPath="$PROJECT_DIR$/COMP4321 Project/src/Pack/SearchTool.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/COMP4321 Project/src/Pack/Word.java" afterPath="$PROJECT_DIR$/COMP4321 Project/src/Pack/Word.java" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
@@ -33,8 +32,8 @@
       <file leaf-file-name="Spider.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/COMP4321 Project/src/Pack/Spider.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="25">
-              <caret line="244" column="41" lean-forward="false" selection-start-line="244" selection-start-column="41" selection-end-line="244" selection-end-column="41" />
+            <state relative-caret-position="174">
+              <caret line="38" column="42" lean-forward="false" selection-start-line="38" selection-start-column="4" selection-end-line="38" selection-end-column="42" />
               <folding>
                 <marker date="1492797380100" expanded="true" signature="11678:11681" ph="{...}" />
               </folding>
@@ -71,9 +70,12 @@
       <file leaf-file-name="IndexTool.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/COMP4321 Project/src/Pack/IndexTool.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="505">
+            <state relative-caret-position="3275">
               <caret line="137" column="0" lean-forward="false" selection-start-line="137" selection-start-column="0" selection-end-line="137" selection-end-column="0" />
-              <folding />
+              <folding>
+                <element signature="e#0#4168#0" expanded="false" />
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -81,8 +83,8 @@
       <file leaf-file-name="InvertedIndex.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/COMP4321 Project/src/Pack/InvertedIndex.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1100">
-              <caret line="109" column="45" lean-forward="false" selection-start-line="109" selection-start-column="45" selection-end-line="109" selection-end-column="45" />
+            <state relative-caret-position="280">
+              <caret line="73" column="99" lean-forward="false" selection-start-line="73" selection-start-column="99" selection-end-line="73" selection-end-column="99" />
               <folding />
             </state>
           </provider>
@@ -91,18 +93,9 @@
       <file leaf-file-name="SearchTool.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/COMP4321 Project/src/Pack/SearchTool.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="505">
+            <state relative-caret-position="2625">
               <caret line="110" column="0" lean-forward="false" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
-              <folding>
-                <element signature="e#2696#2704#0" expanded="true" />
-                <element signature="e#2761#2769#0" expanded="true" />
-                <element signature="e#3309#3317#0" expanded="true" />
-                <element signature="e#3376#3384#0" expanded="true" />
-                <element signature="e#4280#4289#0" expanded="true" />
-                <element signature="e#5774#5789#0" expanded="true" />
-                <element signature="e#5858#5873#0" expanded="true" />
-                <element signature="e#6538#6547#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -110,11 +103,10 @@
       <file leaf-file-name="Word.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/COMP4321 Project/src/Pack/Word.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="355">
-              <caret line="56" column="2" lean-forward="false" selection-start-line="56" selection-start-column="2" selection-end-line="56" selection-end-column="2" />
+            <state relative-caret-position="174">
+              <caret line="67" column="29" lean-forward="false" selection-start-line="67" selection-start-column="29" selection-end-line="67" selection-end-column="29" />
               <folding>
-                <element signature="e#1198#1199#0" expanded="true" />
-                <element signature="e#1236#1237#0" expanded="true" />
+                <element signature="e#2052#2060#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -131,7 +123,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>termwth</find>
       <find>titleFor</find>
       <find>titleMax</find>
       <find>setUrl</find>
@@ -161,6 +152,7 @@
       <find>pgidx</find>
       <find>2005</find>
       <find>full</find>
+      <find>main</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -183,8 +175,8 @@
         <option value="$PROJECT_DIR$/COMP4321 Project/src/Pack/IndexTool.java" />
         <option value="$PROJECT_DIR$/COMP4321 Project/src/Pack/Spider.java" />
         <option value="$PROJECT_DIR$/COMP4321 Project/src/Pack/Extract_db.java" />
-        <option value="$PROJECT_DIR$/COMP4321 Project/src/Pack/InvertedIndex.java" />
         <option value="$PROJECT_DIR$/COMP4321 Project/src/Pack/SearchTool.java" />
+        <option value="$PROJECT_DIR$/COMP4321 Project/src/Pack/InvertedIndex.java" />
         <option value="$PROJECT_DIR$/COMP4321 Project/src/Pack/Word.java" />
       </list>
     </option>
@@ -285,7 +277,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Extract_db">
+  <component name="RunManager" selected="Application.Word">
     <configuration default="false" name="Spider" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -334,6 +326,26 @@
         </pattern>
       </extension>
       <option name="MAIN_CLASS_NAME" value="Pack.Crawl" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="Search-engine" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="Word" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="Pack.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="Pack.Word" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -733,16 +745,18 @@
     <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
       <method />
     </configuration>
-    <list size="3">
+    <list size="4">
       <item index="0" class="java.lang.String" itemvalue="Application.Spider" />
       <item index="1" class="java.lang.String" itemvalue="Application.Extract_db" />
       <item index="2" class="java.lang.String" itemvalue="Application.Crawl" />
+      <item index="3" class="java.lang.String" itemvalue="Application.Word" />
     </list>
     <recent_temporary>
-      <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="Application.Extract_db" />
-        <item index="1" class="java.lang.String" itemvalue="Application.Spider" />
-        <item index="2" class="java.lang.String" itemvalue="Application.Crawl" />
+      <list size="4">
+        <item index="0" class="java.lang.String" itemvalue="Application.Word" />
+        <item index="1" class="java.lang.String" itemvalue="Application.Extract_db" />
+        <item index="2" class="java.lang.String" itemvalue="Application.Spider" />
+        <item index="3" class="java.lang.String" itemvalue="Application.Crawl" />
       </list>
     </recent_temporary>
   </component>
@@ -772,7 +786,8 @@
       <workItem from="1492753424355" duration="37591000" />
       <workItem from="1492841585377" duration="2140000" />
       <workItem from="1492863742123" duration="6328000" />
-      <workItem from="1492916182727" duration="9051000" />
+      <workItem from="1492916182727" duration="9100000" />
+      <workItem from="1493303947354" duration="3303000" />
     </task>
     <task id="LOCAL-00001" summary="solve some bugs like null title">
       <created>1490458954293</created>
@@ -900,11 +915,18 @@
       <option name="project" value="LOCAL" />
       <updated>1492881511889</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="add code in Word.java">
+      <created>1492946248842</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1492946248842</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="112161000" />
+    <option name="totallyTimeSpent" value="115513000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -922,32 +944,32 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286026" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32751092" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32906976" sideWeight="0.5040568" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969433" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32855567" sideWeight="0.49396622" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32751092" sideWeight="0.49396622" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3264192" sideWeight="0.4918864" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3264192" sideWeight="0.4918864" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22702992" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286026" sideWeight="0.49594322" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4024256" sideWeight="0.49396622" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40174672" sideWeight="0.49396622" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32855567" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286026" sideWeight="0.49594322" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -973,7 +995,8 @@
     <MESSAGE value="edit and update the report" />
     <MESSAGE value="debugged" />
     <MESSAGE value="add code for quoted text search until indexing the word in quote&#10;add new code in inverted index for add entry in full text which &quot;-&quot; is added to divided &quot;-docID: posit1 posit2&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="add code for quoted text search until indexing the word in quote&#10;add new code in inverted index for add entry in full text which &quot;-&quot; is added to divided &quot;-docID: posit1 posit2&quot;" />
+    <MESSAGE value="add code in Word.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="add code in Word.java" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1080,8 +1103,14 @@
           <properties />
           <option name="timeStamp" value="60" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/COMP4321 Project/src/Pack/Word.java</url>
+          <line>53</line>
+          <properties />
+          <option name="timeStamp" value="64" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="61" />
+      <option name="time" value="65" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1430,10 +1459,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-576">
           <caret line="139" column="57" lean-forward="false" selection-start-line="139" selection-start-column="57" selection-end-line="139" selection-end-column="57" />
-          <folding>
-            <element signature="e#5644#5645#0" expanded="false" />
-            <element signature="e#5675#5676#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1475,16 +1500,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/COMP4321 Project/src/Pack/IndexTool.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="505">
+        <state relative-caret-position="3275">
           <caret line="137" column="0" lean-forward="false" selection-start-line="137" selection-start-column="0" selection-end-line="137" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#4168#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/COMP4321 Project/src/Pack/SearchTool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2625">
+          <caret line="110" column="0" lean-forward="false" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/COMP4321 Project/src/Pack/Spider.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="244" column="41" lean-forward="false" selection-start-line="244" selection-start-column="41" selection-end-line="244" selection-end-column="41" />
+        <state relative-caret-position="174">
+          <caret line="38" column="42" lean-forward="false" selection-start-line="38" selection-start-column="4" selection-end-line="38" selection-end-column="42" />
           <folding>
             <marker date="1492797380100" expanded="true" signature="11678:11681" ph="{...}" />
           </folding>
@@ -1493,36 +1529,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/COMP4321 Project/src/Pack/InvertedIndex.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1100">
-          <caret line="109" column="45" lean-forward="false" selection-start-line="109" selection-start-column="45" selection-end-line="109" selection-end-column="45" />
+        <state relative-caret-position="280">
+          <caret line="73" column="99" lean-forward="false" selection-start-line="73" selection-start-column="99" selection-end-line="73" selection-end-column="99" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/COMP4321 Project/src/Pack/SearchTool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="505">
-          <caret line="110" column="0" lean-forward="false" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
-          <folding>
-            <element signature="e#2696#2704#0" expanded="true" />
-            <element signature="e#2761#2769#0" expanded="true" />
-            <element signature="e#3309#3317#0" expanded="true" />
-            <element signature="e#3376#3384#0" expanded="true" />
-            <element signature="e#4280#4289#0" expanded="true" />
-            <element signature="e#5774#5789#0" expanded="true" />
-            <element signature="e#5858#5873#0" expanded="true" />
-            <element signature="e#6538#6547#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/COMP4321 Project/src/Pack/Word.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="56" column="2" lean-forward="false" selection-start-line="56" selection-start-column="2" selection-end-line="56" selection-end-column="2" />
+        <state relative-caret-position="174">
+          <caret line="67" column="29" lean-forward="false" selection-start-line="67" selection-start-column="29" selection-end-line="67" selection-end-column="29" />
           <folding>
-            <element signature="e#1198#1199#0" expanded="true" />
-            <element signature="e#1236#1237#0" expanded="true" />
+            <element signature="e#2052#2060#0" expanded="true" />
           </folding>
         </state>
       </provider>

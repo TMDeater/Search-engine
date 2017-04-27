@@ -71,7 +71,7 @@ public class InvertedIndex
 
 	public void fullWordAddEntry(String word, int docID, String position) throws IOException {
 		//Add "-docX 1 3 6 9" for word into hashtable
-		if (hashtable.get(word)!=null && ((String) hashtable.get(word)).contains( "doc" + docID+ " " + position)) {  return;  }
+		if (hashtable.get(word)!=null && ((String) hashtable.get(word)).contains( "doc" + docID+ ":" + position)) {  return;  }
 		String new_entry = "-" +docID +":"+ position +" ";
 		String existed_entry = "";
 		if (hashtable.get(word) != null){
