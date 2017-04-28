@@ -61,19 +61,49 @@ public class Word implements Comparable<Word>{
 
   public Vector<String> checkTheyAreStickTogether(Vector<Word> allWord){
     Vector<String> result = new Vector<String>();
-    return result;
+    if (allWord.size()==0){ return result;}
+    else if (allWord.size()==2) { return checkTwoWordStickTogether(allWord.get(0), allWord.get(1));}
+    else{
+      result = checkTwoWordStickTogether(allWord.get(0), allWord.get(1));
+      for (int i=1;i<allWord.size()-1;i++){
+        Vector<String> comparedResult = new Vector<>();
+        Vector<String> twoWordResult;
+        twoWordResult = checkTwoWordStickTogether(allWord.get(i), allWord.get(i+1));
+        for (String singleTwoWordResult:twoWordResult){
+          //change the singleTwoWordResult to "-i" in position to compare later
+          String[] splitIDPosition = singleTwoWordResult.split(":");
+          String positionMinusI = String.valueOf( Integer.valueOf(splitIDPosition[1])-i );
+          String positionMinusIForCompare = new String(splitIDPosition[0]+":"+positionMinusI);
+
+          if (result.contains(positionMinusIForCompare)){
+            //check if the next word pair connected in each document from "result"
+            //if contain means the next word pair is still connected and add to compared result
+            comparedResult.add(positionMinusIForCompare);
+          }
+        }
+        if (comparedResult.isEmpty()){ return comparedResult;} //empty means not stick together
+        else{ result = comparedResult;}
+      }
+      return result;
+    }
   }
 
   public static void main(String[] args){
     String testword1 ="-12:1 3 8-13:2 4";
-    String testword2 ="-12:2";
-    String testword3 ="-11:10";
+    String testword2 ="-12:2-13:5";
+    String testword3 ="-11:10-12:3-13:6";
 
     Word A = new Word("aaa", testword1);
     Word B = new Word("bbb", testword2);
     Word C = new Word("ccc", testword3);
 
-    Vector<String> result = A.checkTwoWordStickTogether(A, B);
+    Vector<Word> wordVector= new Vector<>();
+    wordVector.add(A);
+    wordVector.add(B);
+    wordVector.add(C);
+
+    Vector<String> result = A.checkTheyAreStickTogether(wordVector);
+
     for (String word: result){
       System.out.println(word);
       System.out.println("\n");
