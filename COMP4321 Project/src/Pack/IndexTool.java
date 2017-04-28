@@ -121,7 +121,7 @@ public class IndexTool{
 	}
 
 	public String findTitleWordID(String titleword) throws IOException {
-		printAll();
+		//printAll();
     	FastIterator iterator = this.Allkeys();
 		String invertedIndexKey;
 		String result = "";

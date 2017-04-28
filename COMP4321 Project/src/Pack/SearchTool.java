@@ -67,7 +67,7 @@ public class SearchTool {
         Vector<String> keywordValue = new Vector<String>();
         Vector<String> quoteKeywordValue = new Vector<String>();
 
-        //pharse search
+        //pharse search=====================================
         String initialString = "";
         //group up the query to be : abc "ahg" ddfh
         //one space is at the beginning
@@ -76,7 +76,7 @@ public class SearchTool {
         }
         //check contain two "
         int count = StringUtils.countMatches(initialString,"\"");
-        if ((count%2)==0){
+        if ((count%2)==0 && count!=0){
             //handle have quote text
             String[] stringSplitByQuote = initialString.split("\"");
             Vector<String> quotedString = new Vector<String>();
@@ -88,30 +88,32 @@ public class SearchTool {
                     nonQuotedString.add(stringSplitByQuote[i]);
                 }
             }
+            //ideal quotedString[0]: "bbb ccc hhh"
             for (int i = 0; i<quotedString.size();i++) {
                 String[] splitQuoteString = quotedString.get(i).split(" ");
+
                 for (int j =0;j<splitQuoteString.length;j++) {
-                    String wordInQuotedString = new String (splitQuoteString[j]);
+                    String wordInQuotedString = new String(splitQuoteString[j]);
+                    //load the word index first
                     if (!(FullWordIdxr.getIdx(wordInQuotedString).equals("-1"))) {
                         quoteKeywordValue.add(FullWordIdxr.getIdx(wordInQuotedString));
-                    }
-                    else {
-                        //no required keyword found so return
-                        Vector<Webpage> result = new Vector<Webpage>();
-                        return result;
-                    }
-                    for (String quoteWordIndex:quoteKeywordValue) {
-                        String docIDandPositionCombine = fullWordInverted.getFullWordDocIDandPosition(quoteWordIndex);
-                        String[] singleDocIDandPosition = docIDandPositionCombine.split("-");
-                        //for each document
-                        for (int k=0;k<singleDocIDandPosition.length;k++){
-                            String[] splitDocIDandPosition = singleDocIDandPosition[k].split(":");
-                            String DocID = splitDocIDandPosition[0];
-                            String[] position = splitDocIDandPosition[1].split(" ");
-
-                        }
+                    } else {
+                        //database do not have the query word so the database must not have result
+                        return new Vector<Webpage>();
                     }
                 }
+
+                Vector<Word> wordVector = new Vector<>();
+                for (String quoteWordIndex:quoteKeywordValue) {
+                    String docIDandPositionCombine = fullWordInverted.getFullWordDocIDandPosition(quoteWordIndex);
+                    wordVector.add(new Word(WordIdxr.getValue(quoteWordIndex),docIDandPositionCombine));
+                }
+                Vector<String> docContainingWordVector = Word.checkTheyAreStickTogether(wordVector);
+
+                for (String docPair:docContainingWordVector){
+                    System.out.println(docPair);
+                }
+
 
             }
         }

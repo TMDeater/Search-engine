@@ -44,7 +44,7 @@ public class Word implements Comparable<Word>{
     return this.docIDAndPosition;
   }
 
-  public Vector<String> checkTwoWordStickTogether(Word word1,Word word2){
+  public static Vector<String> checkTwoWordStickTogether(Word word1,Word word2){
     Vector<String> word1DocIDandPosition = word1.getDocIDAndPosition();
     Vector<String> word2DocIDandPosition = word2.getDocIDAndPosition();
     Vector<String> result = new Vector<>();
@@ -59,7 +59,7 @@ public class Word implements Comparable<Word>{
     return result;
   }
 
-  public Vector<String> checkTheyAreStickTogether(Vector<Word> allWord){
+  public static Vector<String> checkTheyAreStickTogether(Vector<Word> allWord){
     Vector<String> result = new Vector<String>();
     if (allWord.size()==0){ return result;}
     else if (allWord.size()==2) { return checkTwoWordStickTogether(allWord.get(0), allWord.get(1));}
@@ -105,6 +105,26 @@ public class Word implements Comparable<Word>{
     Vector<String> result = A.checkTheyAreStickTogether(wordVector);
 
     for (String word: result){
+      System.out.println(word);
+      System.out.println("\n");
+    }
+
+    String test = "iii \"abcde\" abc";
+    String[] stringSplitByQuote = test.split("\"");
+    Vector<String> quotedString = new Vector<String>();
+    Vector<String> nonQuotedString = new Vector<String>();
+    for (int i=0;i<stringSplitByQuote.length;i++){
+      if ((i%2)==1) {
+        quotedString.add(stringSplitByQuote[i]);
+      } else {
+        nonQuotedString.add(stringSplitByQuote[i]);
+      }
+    }
+    for (String word: quotedString){
+      System.out.println(word);
+      System.out.println("\n");
+    }
+    for (String word: nonQuotedString){
       System.out.println(word);
       System.out.println("\n");
     }

@@ -59,7 +59,9 @@ public class Extract_db {
 		termWeight = new InvertedIndex(recman, "termW");
 
 		Vector<String> keywords = new Vector<String>();
-		keywords.add("bear");
+		keywords.add("\"Dinosaur");
+		keywords.add("Planet\"");
+		//keywords.add("(2003)\"");
 		//keywords.add("swim");
 		//keywords.add("news");
 		SearchTool se = new SearchTool();

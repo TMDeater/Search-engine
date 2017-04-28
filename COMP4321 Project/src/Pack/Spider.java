@@ -15,7 +15,7 @@ import java.util.Set;
 import java.util.Vector;
 
 public class Spider {
-	private static final int MAX = 300;
+	private static final int MAX = 30;
 	private static int numOfPage = 0;
 	private static StemStop stopStem = new StemStop("COMP4321 Project/src/Pack/stopwords.txt");
 	private static Vector<String> TodoList = new Vector<String>();
@@ -224,6 +224,22 @@ public class Spider {
 		//extract all words
 		Vector<String> allWords = crawler.extractWords();
 		Hashtable<Integer, String> allWordMap = new Hashtable<Integer,String>();
+		for (int i=0;i<allWords.size();i++){
+			String word = allWords.elementAt(i);
+			if (word.length()>2){
+				if (!((word.charAt(0) >= 'a' && word.charAt(0) <= 'z')||(word.charAt(0) >= 'A' && word.charAt(0) <= 'Z'))){
+					System.out.println("cut first char "+word);
+					word = word.substring(1);
+					allWords.set(i,word);
+				}
+				if (!((word.charAt(word.length()-1) >= 'a' && word.charAt(word.length()-1) <= 'z')||
+						(word.charAt(word.length()-1) >= 'A' && word.charAt(word.length()-1) <= 'Z'))){
+					System.out.println("cut last char "+word);
+					word = word.substring(0,word.length()-1);
+					allWords.set(i,word);
+				}
+			}
+		}
 		for (int i=0; i<allWords.size(); i++){
 			int index = FullWordIndexer.addEntry(allWords.get(i), Integer.toString(FullWordIndexer.getLastIdx()));
 			fullAddFreqOrNew(allWordMap, index, i);
