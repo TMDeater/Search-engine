@@ -226,15 +226,15 @@ public class Spider {
 		Hashtable<Integer, String> allWordMap = new Hashtable<Integer,String>();
 		for (int i=0;i<allWords.size();i++){
 			String word = allWords.elementAt(i);
-			if (word.length()>2){
+			if (word.length()>1){
 				if (!((word.charAt(0) >= 'a' && word.charAt(0) <= 'z')||(word.charAt(0) >= 'A' && word.charAt(0) <= 'Z'))){
-					System.out.println("cut first char "+word);
+					//System.out.println("cut first char "+word);
 					word = word.substring(1);
 					allWords.set(i,word);
 				}
 				if (!((word.charAt(word.length()-1) >= 'a' && word.charAt(word.length()-1) <= 'z')||
 						(word.charAt(word.length()-1) >= 'A' && word.charAt(word.length()-1) <= 'Z'))){
-					System.out.println("cut last char "+word);
+					//System.out.println("cut last char "+word);
 					word = word.substring(0,word.length()-1);
 					allWords.set(i,word);
 				}

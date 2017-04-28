@@ -3,6 +3,7 @@ package Pack;
 import jdbm.RecordManager;
 import jdbm.RecordManagerFactory;
 import org.apache.commons.lang.StringUtils;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.util.*;
@@ -77,6 +78,9 @@ public class SearchTool {
         //check contain two "
         int count = StringUtils.countMatches(initialString,"\"");
         if ((count%2)==0 && count!=0){
+            Hashtable<String, Double> map = new Hashtable<String,Double>();
+            Hashtable<String, Double> mapForCalSquare = new Hashtable<String,Double>();
+
             //handle have quote text
             String[] stringSplitByQuote = initialString.split("\"");
             Vector<String> quotedString = new Vector<String>();
@@ -92,8 +96,18 @@ public class SearchTool {
             for (int i = 0; i<quotedString.size();i++) {
                 String[] splitQuoteString = quotedString.get(i).split(" ");
 
-                for (int j =0;j<splitQuoteString.length;j++) {
+                for (int j = 0; j < splitQuoteString.length; j++) {
                     String wordInQuotedString = new String(splitQuoteString[j]);
+                    //remove non char at front and end of the string
+                    if (wordInQuotedString.length() > 1) {
+                        if (!((wordInQuotedString.charAt(0) >= 'a' && wordInQuotedString.charAt(0) <= 'z') || (wordInQuotedString.charAt(0) >= 'A' && wordInQuotedString.charAt(0) <= 'Z'))) {
+                            splitQuoteString[j] = wordInQuotedString.substring(1);
+                        }
+                        if (!((wordInQuotedString.charAt(wordInQuotedString.length() - 1) >= 'a' && wordInQuotedString.charAt(wordInQuotedString.length() - 1) <= 'z') ||
+                                (wordInQuotedString.charAt(wordInQuotedString.length() - 1) >= 'A' && wordInQuotedString.charAt(wordInQuotedString.length() - 1) <= 'Z'))) {
+                            splitQuoteString[j] = wordInQuotedString.substring(0, wordInQuotedString.length() - 1);
+                        }
+                    }
                     //load the word index first
                     if (!(FullWordIdxr.getIdx(wordInQuotedString).equals("-1"))) {
                         quoteKeywordValue.add(FullWordIdxr.getIdx(wordInQuotedString));
@@ -104,18 +118,81 @@ public class SearchTool {
                 }
 
                 Vector<Word> wordVector = new Vector<>();
-                for (String quoteWordIndex:quoteKeywordValue) {
+                for (String quoteWordIndex : quoteKeywordValue) {
                     String docIDandPositionCombine = fullWordInverted.getFullWordDocIDandPosition(quoteWordIndex);
-                    wordVector.add(new Word(WordIdxr.getValue(quoteWordIndex),docIDandPositionCombine));
+                    wordVector.add(new Word(WordIdxr.getValue(quoteWordIndex), docIDandPositionCombine));
                 }
                 Vector<String> docContainingWordVector = Word.checkTheyAreStickTogether(wordVector);
 
-                for (String docPair:docContainingWordVector){
-                    System.out.println(docPair);
+//                for (String docPair : docContainingWordVector) {
+//                    System.out.println(docPair);
+//                }
+
+                //count the occur phrase in each document
+                Hashtable<String, Double> quotedStringWeightMap = new Hashtable<>();
+                for (String docIDPositionPair:docContainingWordVector){
+                    String[] splitPair = docIDPositionPair.split(":");
+                    if (quotedStringWeightMap.containsKey(splitPair[0])){
+                        Double DocCount = quotedStringWeightMap.get(splitPair[0]);
+                        quotedStringWeightMap.replace(splitPair[0],DocCount+1);
+                    } else {
+                        quotedStringWeightMap.put(splitPair[0], 1.0);
+                    }
                 }
-
-
+                Set<String> set = quotedStringWeightMap.keySet();
+                Iterator<String> iterator = set.iterator();
+                //normalize the quoted string weight
+                while (iterator.hasNext()) {
+                    String index = iterator.next();
+                    double normalisedWeight = quotedStringWeightMap.get(index)/docContainingWordVector.size();
+                    if (map.containsKey(index)){
+                        map.put(index, map.get(index)+normalisedWeight);
+                        mapForCalSquare.put(index, mapForCalSquare.get(index)+(normalisedWeight*normalisedWeight));
+                    } else {
+                        map.put(index, normalisedWeight+1);
+                        mapForCalSquare.put(index, normalisedWeight*normalisedWeight+1);
+                    }
+                }
             }
+            Set<String> quoteSet = mapForCalSquare.keySet();
+            Iterator<String> quoteIterator = quoteSet.iterator();
+            //calculate the square root of the weight of different doc
+            while (quoteIterator.hasNext()) {
+                String index = quoteIterator.next();
+                mapForCalSquare.put(index, Math.sqrt(mapForCalSquare.get(index)));
+            }
+            //==================================finish find phrase,rest is simple search
+            //String a = nonQuotedString.get(0);
+
+            if (nonQuotedString.size()==1 && nonQuotedString.get(0).equals(" ")) {
+                Vector<Webpage> result = finalCalculateFormula(keywordValue.size()+quotedString.size(), map, mapForCalSquare);
+                Collections.sort(result);
+                return result;
+            }
+
+
+            for (int p=0;p<nonQuotedString.size();p++){
+                String word = nonQuotedString.elementAt(p);
+                if (word.equals(" ")){ continue;}
+                if(!stopStem.isStopWord(word)){
+                    String a = stopStem.stem(word);
+                    keywordValue.add(WordIdxr.getIdx(stopStem.stem(word)));
+                }
+            }
+            SumOfWeightForEachDoc(keywordValue, map, mapForCalSquare);
+            FindTitle(nonQuotedString, map, mapForCalSquare);
+
+            Set<String> set = mapForCalSquare.keySet();
+            Iterator<String> iterator = set.iterator();
+            //calculate the square root of the weight of different doc
+            while (iterator.hasNext()) {
+                String index = iterator.next();
+                mapForCalSquare.put(index, Math.sqrt(mapForCalSquare.get(index)));
+            }
+            Vector<Webpage> result = finalCalculateFormula(keywordValue.size()+quotedString.size(), map, mapForCalSquare);
+            Collections.sort(result);
+            return result;
+
         }
 
 
@@ -148,6 +225,20 @@ public class SearchTool {
             mapForCalSquare.put(index, Math.sqrt(mapForCalSquare.get(index)));
         }
         //***************this may can be removed
+        Vector<Webpage> result = finalCalculateFormula(keywordValue.size(), map, mapForCalSquare);
+        //final calculation
+        //score = sum(weight) / ( sqrt(sum(weight^2)) * sqrt(queryLength^2) )
+        //                                                 ^note that the query weight is set to be 1 so no need to calculate the square
+        //sortting the result in decending order so it can be view and get the best page
+
+        Collections.sort(result);
+        return result;
+    }
+
+    @NotNull
+    private Vector<Webpage> finalCalculateFormula(Integer keywordValueSize, Hashtable<String, Double> map, Hashtable<String, Double> mapForCalSquare) throws IOException {
+        Set<String> set;
+        Iterator<String> iterator;
         set = mapForCalSquare.keySet();
         iterator = set.iterator();
         //***********************
@@ -156,16 +247,10 @@ public class SearchTool {
             String index = iterator.next();
             double sum_d = map.get(index);
             double sumsq_d = mapForCalSquare.get(index);
-            double sqrt_q = Math.sqrt(keywordValue.size());
-            double totalScore = map.get(index)/(mapForCalSquare.get(index) * Math.sqrt(keywordValue.size()));
+            double sqrt_q = Math.sqrt(keywordValueSize);
+            double totalScore = map.get(index)/(mapForCalSquare.get(index) * Math.sqrt(keywordValueSize));
             result.add(toWebpage(index,totalScore));
         }
-        //final calculation
-        //score = sum(weight) / ( sqrt(sum(weight^2)) * sqrt(queryLength^2) )
-        //                                                 ^note that the query weight is set to be 1 so no need to calculate the square
-        //sortting the result in decending order so it can be view and get the best page
-
-        Collections.sort(result);
         return result;
     }
 
@@ -200,7 +285,7 @@ public class SearchTool {
             String titleWordID = TitleIdxr.findTitleWordID(stopStem.stem(keyword.get(i)));
             String[] docIDString = titleInverted.getDocIDForTitle(titleWordID).split(" ");
             if (docIDString[0].equals("-1")) {
-                return;
+                continue;
             }
             for (int j =0; j<docIDString.length; j++){
                 if(!map.containsKey(docIDString[j])){

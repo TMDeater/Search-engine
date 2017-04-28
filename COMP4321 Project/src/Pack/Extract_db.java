@@ -61,7 +61,7 @@ public class Extract_db {
 		Vector<String> keywords = new Vector<String>();
 		keywords.add("\"Dinosaur");
 		keywords.add("Planet\"");
-		//keywords.add("(2003)\"");
+		keywords.add("(2003)");
 		//keywords.add("swim");
 		//keywords.add("news");
 		SearchTool se = new SearchTool();
@@ -70,22 +70,22 @@ public class Extract_db {
 			generatePageInfm(result.elementAt(i).getURL());
 		}
 		
-		int printedpage=0;
-		int i=0;
-		while( printedpage < 30){
-			String iString = String.valueOf(i);
-			String pageidxval=PageIndexer.getValue(iString);
-			int idx = PageIndexer.getIdxNumber(pageidxval);
-			if (Pageppt.getTitle(Integer.toString(idx)).equals("null")){
-				i++;
-				continue;
-			}
-			else{
-				generatePageInfm(pageidxval);
-				printedpage++;
-				i++;
-			}
-		}
+//		int printedpage=0;
+//		int i=0;
+//		while( printedpage < 30){
+//			String iString = String.valueOf(i);
+//			String pageidxval=PageIndexer.getValue(iString);
+//			int idx = PageIndexer.getIdxNumber(pageidxval);
+//			if (Pageppt.getTitle(Integer.toString(idx)).equals("null")){
+//				i++;
+//				continue;
+//			}
+//			else{
+//				generatePageInfm(pageidxval);
+//				printedpage++;
+//				i++;
+//			}
+//		}
 
 			
 		
