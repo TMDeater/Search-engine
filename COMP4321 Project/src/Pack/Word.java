@@ -62,6 +62,7 @@ public class Word implements Comparable<Word>{
   public static Vector<String> checkTheyAreStickTogether(Vector<Word> allWord){
     Vector<String> result = new Vector<String>();
     if (allWord.size()==0){ return result;}
+    if (allWord.size()==1){ return allWord.get(0).getDocIDAndPosition();}
     else if (allWord.size()==2) { return checkTwoWordStickTogether(allWord.get(0), allWord.get(1));}
     else{
       result = checkTwoWordStickTogether(allWord.get(0), allWord.get(1));

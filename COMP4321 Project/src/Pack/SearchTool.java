@@ -170,10 +170,18 @@ public class SearchTool {
                 return result;
             }
 
-
+            Vector<String> splitNonQuotedString = new Vector<>();
+            for (int l=0;l<nonQuotedString.size();l++){
+                String[] split = nonQuotedString.elementAt(l).split(" ");
+                for (int p=0;p<split.length;p++){
+                    if (split[p].equals("")||split[p].equals(" ")) {    continue;}
+                    splitNonQuotedString.add(split[p]);
+                }
+            }
+            nonQuotedString=splitNonQuotedString;
             for (int p=0;p<nonQuotedString.size();p++){
                 String word = nonQuotedString.elementAt(p);
-                if (word.equals(" ")){ continue;}
+                if (word.equals("")||word.equals(" ")){ continue;}
                 if(!stopStem.isStopWord(word)){
                     String a = stopStem.stem(word);
                     keywordValue.add(WordIdxr.getIdx(stopStem.stem(word)));
